@@ -1,0 +1,7 @@
+﻿# Apache Polaris — Iceberg REST catalog with RBAC + multi-engine support
+image: { repository: apache/polaris, tag: latest }
+polaris:
+  realm: factorymind
+  storage:
+    s3: { endpoint: http://minio.factorymind.svc:9000, region: us-east-1, bucket: factorymind-iceberg-warehouse }
+ingress: { enabled: true, hosts: [{ host: polaris.factorymind.internal }] }

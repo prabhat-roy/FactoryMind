@@ -1,0 +1,7 @@
+﻿{
+  "server": "https://wpt.factorymind.internal",
+  "tests": [
+    { "url": "https://www.factorymind.internal/", "location": "Dulles:Chrome", "runs": 3, "connectivity": "4G" },
+    { "url": "https://app.factorymind.internal/", "location": "Mumbai:Chrome", "runs": 3, "connectivity": "Cable" }
+  ]
+}

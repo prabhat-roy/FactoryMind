@@ -1,0 +1,3 @@
+﻿# Eclipse BaSyx — Industry 4.0 Asset Administration Shell
+image: { repository: eclipsebasyx/aas-server, tag: latest }
+basyx: { aas: { backend: mongodb }, registry: { backend: postgres } }

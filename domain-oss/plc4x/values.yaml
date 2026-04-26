@@ -1,0 +1,2 @@
+﻿# Apache PLC4X — industrial protocol abstraction (Modbus, S7, OPC-UA, ADS, EtherNet/IP)
+plc4x: { drivers: [modbus, s7, opcua, ads, eip], camel: { enabled: true } }
