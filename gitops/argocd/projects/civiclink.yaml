@@ -1,0 +1,16 @@
+﻿apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: factorymind
+  namespace: argocd
+spec:
+  description: FactoryMind platform applications
+  sourceRepos:
+    - https://github.com/prabhat-roy/FactoryMind.git
+  destinations:
+    - { namespace: factorymind, server: https://kubernetes.default.svc }
+    - { namespace: factorymind-*, server: https://kubernetes.default.svc }
+  clusterResourceWhitelist:
+    - { group: '*', kind: '*' }
+  namespaceResourceWhitelist:
+    - { group: '*', kind: '*' }

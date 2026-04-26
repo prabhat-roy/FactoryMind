@@ -1,6 +1,4 @@
-# Gitops — FactoryMind
+﻿# GitOps â€” FactoryMind
 
-ArgoCD App-of-Apps, Flux HelmReleases, Argo Rollouts, Argo Workflows, Argo Events.
-
-> Skeleton placeholder. Content will be added as the project takes shape.
-> See [../README.md](../README.md) for the FactoryMind project overview.
+Per-cloud ArgoCD instances reconcile Helm charts from this repo. App-of-Apps
+pattern with one ApplicationSet generating one Application per service per cloud.

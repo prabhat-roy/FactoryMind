@@ -1,0 +1,171 @@
+﻿---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorymind-factorymind
+  labels:
+    factorymind.io/domain: factorymind
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorymind-analytics-policy
+  labels:
+    factorymind.io/domain: analytics-policy
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorymind-audit-compliance
+  labels:
+    factorymind.io/domain: audit-compliance
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorymind-citizen-identity
+  labels:
+    factorymind.io/domain: citizen-identity
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorymind-civil-registration
+  labels:
+    factorymind.io/domain: civil-registration
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorymind-document-management
+  labels:
+    factorymind.io/domain: document-management
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorymind-education
+  labels:
+    factorymind.io/domain: education
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorymind-grievance
+  labels:
+    factorymind.io/domain: grievance
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorymind-identity-access
+  labels:
+    factorymind.io/domain: identity-access
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorymind-inter-agency
+  labels:
+    factorymind.io/domain: inter-agency
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorymind-land-property
+  labels:
+    factorymind.io/domain: land-property
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorymind-notifications
+  labels:
+    factorymind.io/domain: notifications
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorymind-payments-finance
+  labels:
+    factorymind.io/domain: payments-finance
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorymind-permits-licensing
+  labels:
+    factorymind.io/domain: permits-licensing
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorymind-platform
+  labels:
+    factorymind.io/domain: platform
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorymind-public-health
+  labels:
+    factorymind.io/domain: public-health
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorymind-public-safety
+  labels:
+    factorymind.io/domain: public-safety
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorymind-social-welfare
+  labels:
+    factorymind.io/domain: social-welfare
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorymind-taxation
+  labels:
+    factorymind.io/domain: taxation
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
