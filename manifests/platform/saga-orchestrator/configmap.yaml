@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: saga-orchestrator
+  namespace: factorymind
+  labels: { app.kubernetes.io/name: saga-orchestrator, factorymind.io/domain: platform }
+data:
+  LOG_LEVEL: info
+  PORT: "51001"

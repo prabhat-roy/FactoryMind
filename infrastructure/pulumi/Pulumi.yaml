@@ -1,0 +1,8 @@
+name: factorymind
+description: FactoryMind — Pulumi alternative IaC (mirrors infra/terraform/{aws,gcp,azure})
+runtime: { name: nodejs, options: { typescript: true } }
+backend:
+  url: s3://factorymind-pulumi-state
+config:
+  factorymind:env: prod
+  factorymind:cloud: aws

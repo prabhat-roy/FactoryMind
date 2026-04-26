@@ -1,0 +1,7 @@
+creation_rules:
+  - path_regex: secrets/factorymind/.*\.yaml
+    kms: arn:aws:kms:us-east-1:111111111111:alias/factorymind-sops
+  - path_regex: secrets/factorymind/gcp/.*\.yaml
+    gcp_kms: projects/factorymind-prod/locations/global/keyRings/factorymind/cryptoKeys/sops
+  - path_regex: secrets/factorymind/azure/.*\.yaml
+    azure_keyvault: https://factorymind-kv.vault.azure.net/keys/sops/abc123

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dead-letter-service
+  namespace: factorymind
+  labels: { app.kubernetes.io/name: dead-letter-service, factorymind.io/domain: platform }
+data:
+  LOG_LEVEL: info
+  PORT: "51010"

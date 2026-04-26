@@ -1,0 +1,8 @@
+config:
+  rootDomain: pomerium.factorymind.internal
+  generateSignedJWT: true
+authenticate:
+  idp:
+    provider: oidc
+    url: https://keycloak.factorymind.internal
+ingressController: { enabled: true }

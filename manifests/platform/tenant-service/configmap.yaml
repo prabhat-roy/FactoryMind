@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tenant-service
+  namespace: factorymind
+  labels: { app.kubernetes.io/name: tenant-service, factorymind.io/domain: platform }
+data:
+  LOG_LEVEL: info
+  PORT: "51006"

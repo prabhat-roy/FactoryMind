@@ -1,0 +1,10 @@
+clusterName: factorymind.teleport.internal
+authentication:
+  type: github
+  githubConnector:
+    name: github
+    redirectUrl: https://teleport.factorymind.internal/v1/webapi/github/callback
+kubeClusterName: factorymind-prod
+ingress:
+  enabled: true
+  hostname: teleport.factorymind.internal

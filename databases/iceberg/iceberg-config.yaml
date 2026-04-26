@@ -1,0 +1,12 @@
+catalog:
+  name: factorymind_lake
+  type: rest
+  uri: https://nessie.factorymind.internal/iceberg
+warehouse: s3://factorymind-data-lake/warehouse
+io:
+  s3:
+    endpoint: https://s3.amazonaws.com
+    region: us-east-1
+table-default:
+  write.format.default: parquet
+  write.metadata.compression-codec: gzip
