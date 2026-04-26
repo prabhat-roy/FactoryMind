@@ -1,0 +1,8 @@
+[
+  {
+    "id": "shop-floor-flow",
+    "type": "tab",
+    "label": "Shop Floor: OPC-UA -> Kafka",
+    "info": "Reads from PLC tags via OPC-UA and publishes normalized telemetry to Kafka."
+  }
+]

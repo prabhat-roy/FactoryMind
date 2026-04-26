@@ -1,0 +1,11 @@
+# Eclipse Sparkplug — MQTT-based IIoT specification
+mqtt:
+  broker: mqtt://mosquitto.messaging:1883
+  groupId: factorymind
+  edgeNodeId: line-${LINE_ID}
+metrics:
+  - { name: temperature, datatype: Float, alias: 1 }
+  - { name: pressure,    datatype: Float, alias: 2 }
+  - { name: rpm,         datatype: Int32, alias: 3 }
+  - { name: status,      datatype: String, alias: 4 }
+sequence: { enabled: true }
