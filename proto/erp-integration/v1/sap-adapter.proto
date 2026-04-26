@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package factorymind.erp_integration.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/erp-integration/v1;erpintegrationv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.erp_integration.v1";
+
+// ISA-95 B2MML mapping - production schedule from SAP IDoc LOIPRO/LOIROU.
+message SapProductionOrder {
+  string sap_order_number = 1;
+  string material_number = 2;
+  factorymind.common.v1.Quantity quantity = 3;
+  google.protobuf.Timestamp basic_start = 4;
+  google.protobuf.Timestamp basic_finish = 5;
+  string plant = 6;
+  string mrp_controller = 7;
+}
+
+message SyncProductionOrdersRequest {
+  repeated SapProductionOrder orders = 1;
+}
+
+message SyncProductionOrdersResponse {
+  uint32 created = 1;
+  uint32 updated = 2;
+  uint32 failed = 3;
+}
+
+service SapAdapterService {
+  rpc SyncProductionOrders(SyncProductionOrdersRequest) returns (SyncProductionOrdersResponse);
+}

@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package factorymind.notifications.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/notifications/v1;notificationsv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.notifications.v1";
+
+enum Channel {
+  CHANNEL_UNSPECIFIED = 0;
+  EMAIL = 1;
+  SMS = 2;
+  PUSH = 3;
+  ANDON = 4;
+}
+
+message Notification {
+  string id = 1;
+  Channel channel = 2;
+  string recipient = 3;
+  string subject = 4;
+  string body = 5;
+  google.protobuf.Timestamp scheduled_for = 6;
+  string status = 7;
+}
+
+message SendRequest {
+  Notification notification = 1;
+}
+
+service NotificationService {
+  rpc Send(SendRequest) returns (Notification);
+}

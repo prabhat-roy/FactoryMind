@@ -1,0 +1,12 @@
+{
+  "type": "record",
+  "name": "NcrRaised",
+  "namespace": "io.factorymind.quality.events",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "ncr_id", "type": "string"},
+    {"name": "lot_id", "type": "string"},
+    {"name": "severity", "type": {"type": "enum", "name": "NcrSeverity", "symbols": ["MINOR", "MAJOR", "CRITICAL"]}},
+    {"name": "raised_at", "type": {"type": "long", "logicalType": "timestamp-millis"}}
+  ]
+}

@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package factorymind.supply_chain.v1;
+
+import "common/v1/types.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/supply-chain/v1;supplychainv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.supply_chain.v1";
+
+message Supplier {
+  string id = 1;
+  string code = 2;
+  string name = 3;
+  string country = 4;
+  string approved_status = 5;
+  double quality_rating = 6;
+  double otd_rating = 7;
+}
+
+message GetSupplierRequest {
+  string id = 1;
+}
+
+service SupplierService {
+  rpc GetSupplier(GetSupplierRequest) returns (Supplier);
+}

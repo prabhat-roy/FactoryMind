@@ -1,0 +1,13 @@
+{
+  "type": "record",
+  "name": "SerialConsumed",
+  "namespace": "io.factorymind.traceability.events",
+  "doc": "Serialised component consumed into parent assembly.",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "child_serial", "type": "string"},
+    {"name": "parent_serial", "type": "string"},
+    {"name": "work_order_id", "type": "string"},
+    {"name": "consumed_at", "type": {"type": "long", "logicalType": "timestamp-millis"}}
+  ]
+}

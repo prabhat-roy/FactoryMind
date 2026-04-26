@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package factorymind.digital_twin.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/digital-twin/v1;digitaltwinv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.digital_twin.v1";
+
+message Twin {
+  string id = 1;
+  string equipment_id = 2;
+  string model_version = 3;
+  google.protobuf.Struct state = 4; // free-form digital twin state document
+  google.protobuf.Timestamp last_synced = 5;
+}
+
+message GetTwinRequest {
+  string id = 1;
+}
+
+message UpdateTwinStateRequest {
+  string id = 1;
+  google.protobuf.Struct delta = 2;
+}
+
+service TwinService {
+  rpc GetTwin(GetTwinRequest) returns (Twin);
+  rpc UpdateTwinState(UpdateTwinStateRequest) returns (Twin);
+}

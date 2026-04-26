@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package factorymind.compliance.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/compliance/v1;compliancev1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.compliance.v1";
+
+// Electronic Batch Record per FDA 21 CFR Part 11 and EU Annex 11.
+message BatchRecord {
+  string id = 1;
+  string lot_id = 2;
+  string material_id = 3;
+  string recipe_id = 4;
+  string status = 5; // OPEN | RELEASED | REJECTED | LOCKED
+  repeated BatchPhase phases = 6;
+  factorymind.common.v1.ESignature qa_release = 7;
+  factorymind.common.v1.AuditMeta audit = 8;
+}
+
+message BatchPhase {
+  string phase_id = 1;
+  string name = 2;
+  google.protobuf.Timestamp start = 3;
+  google.protobuf.Timestamp end = 4;
+  repeated ProcessParameter parameters = 5;
+  factorymind.common.v1.ESignature operator_sign = 6;
+}
+
+message ProcessParameter {
+  string code = 1;
+  double value = 2;
+  string uom = 3;
+  double low_limit = 4;
+  double high_limit = 5;
+  bool out_of_spec = 6;
+  google.protobuf.Timestamp captured_at = 7;
+}
+
+message GetBatchRecordRequest {
+  string lot_id = 1;
+}
+
+service BatchRecordService {
+  rpc GetBatchRecord(GetBatchRecordRequest) returns (BatchRecord);
+}

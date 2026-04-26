@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package factorymind.platform.v1;
+
+import "common/v1/types.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/platform/v1;platformv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.platform.v1";
+
+// MES BFF aggregates work order, dispatch, WIP and OEE for the React MES UI.
+
+message MesDashboardRequest {
+  string work_center_id = 1;
+}
+
+message MesDashboardResponse {
+  repeated MesWorkOrderSummary orders = 1;
+  double oee = 2;
+  uint32 active_alarms = 3;
+  uint32 open_ncrs = 4;
+}
+
+message MesWorkOrderSummary {
+  string id = 1;
+  string number = 2;
+  string status = 3;
+  factorymind.common.v1.Quantity planned = 4;
+  factorymind.common.v1.Quantity completed = 5;
+  string operator = 6;
+}
+
+service MesBffService {
+  rpc GetDashboard(MesDashboardRequest) returns (MesDashboardResponse);
+}

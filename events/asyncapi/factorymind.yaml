@@ -1,0 +1,91 @@
+asyncapi: 2.6.0
+info:
+  title: FactoryMind Event Catalog
+  version: 1.0.0
+  description: |
+    Domain events flowing through Kafka (IT) and MQTT (OT).
+    Naming: `{domain}.{entity}.{event}`.
+servers:
+  kafka:
+    url: kafka.factorymind.svc:9092
+    protocol: kafka
+    description: IT Kafka cluster
+  mqtt-ot:
+    url: mqtt://mosquitto.ot.svc:1883
+    protocol: mqtt
+    description: OT MQTT broker (shop-floor)
+channels:
+  mes.workorder.dispatched:
+    description: Work order has been dispatched to a work center.
+    publish:
+      message:
+        $ref: '#/components/messages/WorkOrderDispatched'
+  mes.workorder.released:
+    publish:
+      message:
+        $ref: '#/components/messages/WorkOrderReleased'
+  quality.inspection.failed:
+    publish:
+      message:
+        $ref: '#/components/messages/InspectionFailed'
+  quality.spc.violation:
+    publish:
+      message:
+        $ref: '#/components/messages/SpcViolation'
+  iiot.machine.alarm:
+    publish:
+      message:
+        $ref: '#/components/messages/MachineAlarm'
+  predictive-maintenance.failure.predicted:
+    publish:
+      message:
+        $ref: '#/components/messages/FailurePredicted'
+  traceability.batch.released:
+    publish:
+      message:
+        $ref: '#/components/messages/BatchReleased'
+  traceability.recall.opened:
+    publish:
+      message:
+        $ref: '#/components/messages/RecallOpened'
+  energy.oee.snapshot:
+    publish:
+      message:
+        $ref: '#/components/messages/OeeSnapshot'
+  compliance.esignature.applied:
+    publish:
+      message:
+        $ref: '#/components/messages/ESignatureApplied'
+components:
+  messages:
+    WorkOrderDispatched:
+      schemaFormat: application/vnd.apache.avro+json;version=1.9.0
+      payload:
+        $ref: '../avro/mes.workorder.dispatched-v1.avsc'
+    WorkOrderReleased:
+      payload:
+        $ref: '../avro/mes.workorder.released-v1.avsc'
+    InspectionFailed:
+      payload:
+        $ref: '../avro/quality.inspection.failed-v1.avsc'
+    SpcViolation:
+      payload:
+        $ref: '../avro/quality.spc.violation-v1.avsc'
+    MachineAlarm:
+      payload:
+        $ref: '../jsonschema/iiot.machine.alarm-v1.json'
+    FailurePredicted:
+      payload:
+        $ref: '../avro/predictive-maintenance.failure.predicted-v1.avsc'
+    BatchReleased:
+      payload:
+        $ref: '../avro/traceability.batch.released-v1.avsc'
+    RecallOpened:
+      payload:
+        $ref: '../avro/traceability.recall.opened-v1.avsc'
+    OeeSnapshot:
+      payload:
+        $ref: '../avro/energy.oee.snapshot-v1.avsc'
+    ESignatureApplied:
+      payload:
+        $ref: '../avro/compliance.esignature.applied-v1.avsc'

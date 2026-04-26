@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package factorymind.maintenance.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/maintenance/v1;maintenancev1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.maintenance.v1";
+
+enum WorkOrderType {
+  WORK_ORDER_TYPE_UNSPECIFIED = 0;
+  PREVENTIVE = 1;
+  CORRECTIVE = 2;
+  PREDICTIVE = 3;
+  INSPECTION = 4;
+  CALIBRATION = 5;
+}
+
+message MaintenanceWorkOrder {
+  string id = 1;
+  string equipment_id = 2;
+  WorkOrderType type = 3;
+  string description = 4;
+  google.protobuf.Timestamp scheduled_start = 5;
+  google.protobuf.Timestamp scheduled_end = 6;
+  string status = 7;
+  string assigned_technician_id = 8;
+  factorymind.common.v1.AuditMeta audit = 9;
+}
+
+message CreateMaintenanceWorkOrderRequest {
+  MaintenanceWorkOrder work_order = 1;
+}
+
+service CmmsService {
+  rpc CreateWorkOrder(CreateMaintenanceWorkOrderRequest) returns (MaintenanceWorkOrder);
+}

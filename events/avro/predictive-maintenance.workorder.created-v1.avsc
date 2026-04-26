@@ -1,0 +1,12 @@
+{
+  "type": "record",
+  "name": "MaintenanceWorkOrderCreated",
+  "namespace": "io.factorymind.maintenance.events",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "work_order_id", "type": "string"},
+    {"name": "equipment_id", "type": "string"},
+    {"name": "type", "type": {"type": "enum", "name": "MwoType", "symbols": ["PREVENTIVE", "CORRECTIVE", "PREDICTIVE", "INSPECTION", "CALIBRATION"]}},
+    {"name": "scheduled_start", "type": {"type": "long", "logicalType": "timestamp-millis"}}
+  ]
+}

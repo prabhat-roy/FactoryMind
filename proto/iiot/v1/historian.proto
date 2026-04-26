@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package factorymind.iiot.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/iiot/v1;iiotv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.iiot.v1";
+
+enum AggregationFn {
+  AGGREGATION_FN_UNSPECIFIED = 0;
+  AVG = 1;
+  MIN = 2;
+  MAX = 3;
+  STDDEV = 4;
+  COUNT = 5;
+}
+
+message QueryHistorianRequest {
+  string equipment_id = 1;
+  string metric = 2;
+  google.protobuf.Timestamp from = 3;
+  google.protobuf.Timestamp to = 4;
+  AggregationFn aggregation = 5;
+  string bucket = 6; // 1m | 5m | 1h | 1d
+}
+
+message HistoricalPoint {
+  google.protobuf.Timestamp ts = 1;
+  double value = 2;
+}
+
+message QueryHistorianResponse {
+  repeated HistoricalPoint points = 1;
+}
+
+service HistorianService {
+  rpc Query(QueryHistorianRequest) returns (QueryHistorianResponse);
+}

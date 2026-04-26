@@ -1,0 +1,14 @@
+{
+  "type": "record",
+  "name": "WorkOrderReleased",
+  "namespace": "io.factorymind.mes.events",
+  "doc": "Emitted when a work order moves from CREATED to RELEASED (after BOM and routing checks).",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "work_order_id", "type": "string"},
+    {"name": "released_by", "type": "string"},
+    {"name": "esignature_hash", "type": "string"},
+    {"name": "released_at", "type": {"type": "long", "logicalType": "timestamp-millis"}},
+    {"name": "trace_id", "type": "string"}
+  ]
+}

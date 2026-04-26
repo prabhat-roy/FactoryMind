@@ -1,0 +1,14 @@
+{
+  "type": "record",
+  "name": "WorkOrderCompleted",
+  "namespace": "io.factorymind.mes.events",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "work_order_id", "type": "string"},
+    {"name": "good_quantity", "type": "double"},
+    {"name": "scrap_quantity", "type": "double"},
+    {"name": "rework_quantity", "type": "double"},
+    {"name": "completed_at", "type": {"type": "long", "logicalType": "timestamp-millis"}},
+    {"name": "trace_id", "type": "string"}
+  ]
+}

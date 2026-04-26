@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package factorymind.energy.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/energy/v1;energyv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.energy.v1";
+
+message CarbonReading {
+  string site_id = 1;
+  google.protobuf.Timestamp window_start = 2;
+  google.protobuf.Timestamp window_end = 3;
+  double scope1_kg_co2e = 4;
+  double scope2_kg_co2e = 5;
+  double scope3_kg_co2e = 6;
+}
+
+message GetCarbonRequest {
+  string site_id = 1;
+  google.protobuf.Timestamp from = 2;
+  google.protobuf.Timestamp to = 3;
+}
+
+service CarbonTrackerService {
+  rpc GetCarbon(GetCarbonRequest) returns (CarbonReading);
+}

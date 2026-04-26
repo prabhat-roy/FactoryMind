@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package factorymind.production_planning.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/production-planning/v1;productionplanningv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.production_planning.v1";
+
+enum WorkOrderStatus {
+  WORK_ORDER_STATUS_UNSPECIFIED = 0;
+  CREATED = 1;
+  RELEASED = 2;
+  DISPATCHED = 3;
+  IN_PROGRESS = 4;
+  ON_HOLD = 5;
+  COMPLETED = 6;
+  CLOSED = 7;
+  CANCELLED = 8;
+}
+
+message WorkOrder {
+  string id = 1;
+  string order_number = 2;
+  factorymind.common.v1.Material material = 3;
+  factorymind.common.v1.Quantity planned_quantity = 4;
+  factorymind.common.v1.Quantity completed_quantity = 5;
+  factorymind.common.v1.WorkCenter work_center = 6;
+  WorkOrderStatus status = 7;
+  google.protobuf.Timestamp planned_start = 8;
+  google.protobuf.Timestamp planned_end = 9;
+  google.protobuf.Timestamp actual_start = 10;
+  google.protobuf.Timestamp actual_end = 11;
+  string routing_id = 12;
+  string bom_id = 13;
+  factorymind.common.v1.AuditMeta audit = 14;
+}
+
+message CreateWorkOrderRequest {
+  string material_id = 1;
+  factorymind.common.v1.Quantity planned_quantity = 2;
+  string work_center_id = 3;
+  google.protobuf.Timestamp planned_start = 4;
+  google.protobuf.Timestamp planned_end = 5;
+  string routing_id = 6;
+  string bom_id = 7;
+}
+
+message CreateWorkOrderResponse {
+  WorkOrder work_order = 1;
+}
+
+message GetWorkOrderRequest {
+  string id = 1;
+}
+
+message ReleaseWorkOrderRequest {
+  string id = 1;
+  factorymind.common.v1.ESignature signature = 2;
+}
+
+message DispatchWorkOrderRequest {
+  string id = 1;
+  string operator_id = 2;
+}
+
+service WorkOrderService {
+  rpc CreateWorkOrder(CreateWorkOrderRequest) returns (CreateWorkOrderResponse);
+  rpc GetWorkOrder(GetWorkOrderRequest) returns (WorkOrder);
+  rpc ReleaseWorkOrder(ReleaseWorkOrderRequest) returns (WorkOrder);
+  rpc DispatchWorkOrder(DispatchWorkOrderRequest) returns (WorkOrder);
+}

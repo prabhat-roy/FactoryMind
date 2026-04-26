@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+package factorymind.common.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/common/v1;commonv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.common.v1";
+
+// Site identifies a manufacturing site per ISA-95 Level 4 - enterprise site.
+message Site {
+  string id = 1;
+  string name = 2;
+  string country_code = 3;
+  string time_zone = 4;
+}
+
+// Area within a site (ISA-95 Level 3) - production area, e.g. paint shop, assembly.
+message Area {
+  string id = 1;
+  string site_id = 2;
+  string name = 3;
+}
+
+// WorkCenter (ISA-95 Level 2) - cell, line, or production unit.
+message WorkCenter {
+  string id = 1;
+  string area_id = 2;
+  string name = 3;
+  string type = 4; // CELL | LINE | PROCESS_UNIT
+}
+
+// EquipmentRef points to a physical machine, robot, CNC, sensor, PLC, etc.
+message EquipmentRef {
+  string id = 1;
+  string serial_number = 2;
+  string vendor = 3;
+  string model = 4;
+  string work_center_id = 5;
+}
+
+// Material identifies a part, raw material, or finished good (GS1 GTIN).
+message Material {
+  string id = 1;
+  string gtin = 2;
+  string description = 3;
+  string uom = 4;
+}
+
+message Quantity {
+  double value = 1;
+  string uom = 2;
+}
+
+message Money {
+  string currency = 1;
+  string amount = 2; // string to avoid float precision issues
+}
+
+// Operator reference - person on the shop floor performing an action.
+message OperatorRef {
+  string id = 1;
+  string badge_number = 2;
+  string display_name = 3;
+}
+
+// ESignature - FDA 21 CFR Part 11 compliant electronic signature.
+message ESignature {
+  string operator_id = 1;
+  string meaning = 2; // APPROVED, REVIEWED, REJECTED, RELEASED
+  google.protobuf.Timestamp signed_at = 3;
+  string signature_hash = 4;
+  string reason_code = 5;
+}
+
+message Pagination {
+  int32 page = 1;
+  int32 page_size = 2;
+  int64 total = 3;
+}
+
+message AuditMeta {
+  string created_by = 1;
+  google.protobuf.Timestamp created_at = 2;
+  string updated_by = 3;
+  google.protobuf.Timestamp updated_at = 4;
+  string trace_id = 5;
+}

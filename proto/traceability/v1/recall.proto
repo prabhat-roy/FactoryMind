@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package factorymind.traceability.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/traceability/v1;traceabilityv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.traceability.v1";
+
+message RecallScope {
+  string id = 1;
+  string root_lot_or_serial = 2;
+  repeated string affected_lots = 3;
+  repeated string affected_finished_goods = 4;
+  string severity = 5;
+  google.protobuf.Timestamp opened_at = 6;
+}
+
+message OpenRecallRequest {
+  string root_lot_or_serial = 1;
+  string reason = 2;
+  string severity = 3;
+}
+
+service RecallService {
+  rpc OpenRecall(OpenRecallRequest) returns (RecallScope);
+}

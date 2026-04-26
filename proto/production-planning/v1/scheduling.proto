@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package factorymind.production_planning.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/production-planning/v1;productionplanningv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.production_planning.v1";
+
+message ScheduleRequest {
+  string work_center_id = 1;
+  google.protobuf.Timestamp horizon_start = 2;
+  google.protobuf.Timestamp horizon_end = 3;
+  string optimisation_objective = 4; // MAKESPAN | TARDINESS | CHANGEOVER
+}
+
+message ScheduleSlot {
+  string work_order_id = 1;
+  string equipment_id = 2;
+  google.protobuf.Timestamp start = 3;
+  google.protobuf.Timestamp end = 4;
+}
+
+message ScheduleResponse {
+  string schedule_id = 1;
+  repeated ScheduleSlot slots = 2;
+  double makespan_hours = 3;
+}
+
+service SchedulingService {
+  rpc OptimiseSchedule(ScheduleRequest) returns (ScheduleResponse);
+}

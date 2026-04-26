@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package factorymind.iiot.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/iiot/v1;iiotv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.iiot.v1";
+
+message SensorReading {
+  string equipment_id = 1;
+  string sensor_id = 2;
+  string metric = 3; // VIBRATION_RMS | TEMPERATURE | CURRENT | PRESSURE | RPM
+  double value = 4;
+  string uom = 5;
+  google.protobuf.Timestamp ts = 6;
+  uint32 quality = 7; // 0-255 OPC-UA-style quality
+}
+
+message IngestRequest {
+  repeated SensorReading readings = 1;
+}
+
+message IngestResponse {
+  uint32 accepted = 1;
+}
+
+service TelemetryService {
+  rpc Ingest(stream IngestRequest) returns (IngestResponse);
+}

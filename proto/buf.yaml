@@ -1,0 +1,13 @@
+version: v1
+name: buf.factorymind.io/factorymind/proto
+deps:
+  - buf.build/googleapis/googleapis
+  - buf.build/grpc/grpc
+breaking:
+  use:
+    - FILE
+lint:
+  use:
+    - DEFAULT
+  except:
+    - PACKAGE_VERSION_SUFFIX

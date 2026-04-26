@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package factorymind.mes.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/mes/v1;mesv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.mes.v1";
+
+enum WipState {
+  WIP_STATE_UNSPECIFIED = 0;
+  AT_OPERATION = 1;
+  IN_TRANSIT = 2;
+  ON_HOLD_QA = 3;
+  REWORK = 4;
+  SCRAP = 5;
+  COMPLETE = 6;
+}
+
+message WipEvent {
+  string id = 1;
+  string lot_id = 2;
+  string serial_number = 3;
+  string operation_id = 4;
+  string equipment_id = 5;
+  WipState state = 6;
+  google.protobuf.Timestamp event_time = 7;
+  factorymind.common.v1.OperatorRef operator = 8;
+}
+
+message ReportWipRequest {
+  WipEvent event = 1;
+}
+
+service TrackingService {
+  rpc ReportWip(ReportWipRequest) returns (WipEvent);
+}

@@ -1,0 +1,17 @@
+{
+  "type": "record",
+  "name": "InspectionFailed",
+  "namespace": "io.factorymind.quality.events",
+  "doc": "Inspection result is FAIL.",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "inspection_id", "type": "string"},
+    {"name": "lot_id", "type": "string"},
+    {"name": "work_order_id", "type": "string"},
+    {"name": "inspector_id", "type": "string"},
+    {"name": "failed_characteristics", "type": {"type": "array", "items": "string"}},
+    {"name": "severity", "type": {"type": "enum", "name": "Severity", "symbols": ["MINOR", "MAJOR", "CRITICAL"]}},
+    {"name": "occurred_at", "type": {"type": "long", "logicalType": "timestamp-millis"}},
+    {"name": "trace_id", "type": "string"}
+  ]
+}

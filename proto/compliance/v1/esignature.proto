@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package factorymind.compliance.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/compliance/v1;compliancev1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.compliance.v1";
+
+message SignRequest {
+  string operator_id = 1;
+  string password = 2; // 21 CFR Part 11 requires identity reverification on each signature
+  string meaning = 3; // APPROVED | REVIEWED | RELEASED
+  string subject_uri = 4; // URI of the record being signed
+  string reason_code = 5;
+  string totp = 6; // optional second factor
+}
+
+message SignResponse {
+  factorymind.common.v1.ESignature signature = 1;
+}
+
+service ESignatureService {
+  rpc Sign(SignRequest) returns (SignResponse);
+}

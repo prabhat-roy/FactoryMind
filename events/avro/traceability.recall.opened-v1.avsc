@@ -1,0 +1,12 @@
+{
+  "type": "record",
+  "name": "RecallOpened",
+  "namespace": "io.factorymind.traceability.events",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "recall_id", "type": "string"},
+    {"name": "root_lot_or_serial", "type": "string"},
+    {"name": "severity", "type": {"type": "enum", "name": "RecallSeverity", "symbols": ["LOW", "MEDIUM", "HIGH", "REGULATORY"]}},
+    {"name": "opened_at", "type": {"type": "long", "logicalType": "timestamp-millis"}}
+  ]
+}

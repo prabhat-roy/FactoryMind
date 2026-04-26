@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package factorymind.quality.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/quality/v1;qualityv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.quality.v1";
+
+enum NcrSeverity {
+  NCR_SEVERITY_UNSPECIFIED = 0;
+  MINOR = 1;
+  MAJOR = 2;
+  CRITICAL = 3;
+}
+
+enum NcrStatus {
+  NCR_STATUS_UNSPECIFIED = 0;
+  OPEN = 1;
+  IN_REVIEW = 2;
+  CLOSED = 3;
+  REJECTED = 4;
+}
+
+message NonConformanceReport {
+  string id = 1;
+  string lot_id = 2;
+  string work_order_id = 3;
+  string description = 4;
+  NcrSeverity severity = 5;
+  NcrStatus status = 6;
+  factorymind.common.v1.OperatorRef raised_by = 7;
+  google.protobuf.Timestamp raised_at = 8;
+  string disposition = 9; // SCRAP | REWORK | USE_AS_IS | RTV
+}
+
+message RaiseNcrRequest {
+  NonConformanceReport ncr = 1;
+}
+
+service NcrService {
+  rpc RaiseNcr(RaiseNcrRequest) returns (NonConformanceReport);
+}

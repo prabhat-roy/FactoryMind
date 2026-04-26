@@ -1,0 +1,13 @@
+{
+  "type": "record",
+  "name": "DeviationOpened",
+  "namespace": "io.factorymind.compliance.events",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "deviation_id", "type": "string"},
+    {"name": "lot_id", "type": "string"},
+    {"name": "category", "type": {"type": "enum", "name": "DeviationCategory", "symbols": ["PROCESS", "EQUIPMENT", "MATERIAL", "DOCUMENTATION", "ENVIRONMENT"]}},
+    {"name": "severity", "type": {"type": "enum", "name": "DeviationSeverity", "symbols": ["MINOR", "MAJOR", "CRITICAL"]}},
+    {"name": "opened_at", "type": {"type": "long", "logicalType": "timestamp-millis"}}
+  ]
+}

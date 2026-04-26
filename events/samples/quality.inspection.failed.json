@@ -1,0 +1,11 @@
+{
+  "event_id": "1a4dab85-9b81-44ee-bcb2-2c0d6da6df02",
+  "inspection_id": "INS-2026-77342",
+  "lot_id": "LOT-77342",
+  "work_order_id": "WO-2026-000123",
+  "inspector_id": "OP-2018",
+  "failed_characteristics": ["TORQUE_NM_BOLT_3", "DIMENSION_X"],
+  "severity": "MAJOR",
+  "occurred_at": 1761480223000,
+  "trace_id": "00-2c0d6da6-67b7-4f81-a8c0-14a4a6c79b00-02"
+}

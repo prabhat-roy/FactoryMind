@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package factorymind.warehouse.v1;
+
+import "common/v1/types.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/warehouse/v1;warehousev1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.warehouse.v1";
+
+message StockLevel {
+  string material_id = 1;
+  string location_id = 2;
+  string lot_id = 3;
+  factorymind.common.v1.Quantity on_hand = 4;
+  factorymind.common.v1.Quantity allocated = 5;
+  factorymind.common.v1.Quantity available = 6;
+}
+
+message GetStockRequest {
+  string material_id = 1;
+  string location_id = 2;
+}
+
+service InventoryService {
+  rpc GetStock(GetStockRequest) returns (StockLevel);
+}

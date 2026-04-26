@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package factorymind.quality.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/quality/v1;qualityv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.quality.v1";
+
+message SpcDataPoint {
+  string chart_id = 1;
+  double value = 2;
+  google.protobuf.Timestamp ts = 3;
+  string subgroup_id = 4;
+}
+
+message ControlChartViolation {
+  string chart_id = 1;
+  string rule = 2; // WESTERN_ELECTRIC_RULE_1..8
+  google.protobuf.Timestamp detected_at = 3;
+  string severity = 4;
+}
+
+message GetChartRequest {
+  string chart_id = 1;
+  google.protobuf.Timestamp from = 2;
+  google.protobuf.Timestamp to = 3;
+}
+
+message ChartResponse {
+  repeated SpcDataPoint points = 1;
+  double mean = 2;
+  double ucl = 3;
+  double lcl = 4;
+  repeated ControlChartViolation violations = 5;
+}
+
+service SpcService {
+  rpc GetChart(GetChartRequest) returns (ChartResponse);
+}

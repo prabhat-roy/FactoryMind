@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "FailurePredicted",
+  "namespace": "io.factorymind.maintenance.events",
+  "doc": "ML-driven prediction that an asset will fail within the predicted RUL window.",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "equipment_id", "type": "string"},
+    {"name": "failure_mode", "type": "string"},
+    {"name": "probability", "type": "double"},
+    {"name": "rul_hours", "type": "double"},
+    {"name": "model_version", "type": "string"},
+    {"name": "predicted_at", "type": {"type": "long", "logicalType": "timestamp-millis"}}
+  ]
+}

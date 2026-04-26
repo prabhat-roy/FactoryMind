@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "SpcViolation",
+  "namespace": "io.factorymind.quality.events",
+  "doc": "SPC control chart Western Electric rule violation.",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "chart_id", "type": "string"},
+    {"name": "rule", "type": {"type": "enum", "name": "WeRule", "symbols": ["WE_1", "WE_2", "WE_3", "WE_4", "WE_5", "WE_6", "WE_7", "WE_8"]}},
+    {"name": "value", "type": "double"},
+    {"name": "ucl", "type": "double"},
+    {"name": "lcl", "type": "double"},
+    {"name": "occurred_at", "type": {"type": "long", "logicalType": "timestamp-millis"}}
+  ]
+}

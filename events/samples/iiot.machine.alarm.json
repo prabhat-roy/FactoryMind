@@ -1,0 +1,10 @@
+{
+  "event_id": "7c0d6da6-67b7-4f81-a8c0-14a4a6c79b03",
+  "equipment_id": "CNC-LATHE-04",
+  "site_id": "SITE-DE-MUC",
+  "severity": "ALARM",
+  "code": "OVERTEMP_SPINDLE",
+  "message": "Spindle temperature 92.4 C exceeds limit 85 C",
+  "ts": "2026-04-26T08:42:13.000Z",
+  "ack_required": true
+}

@@ -1,0 +1,13 @@
+{
+  "event_id": "8f1a4f1c-2f8b-4d11-9b6a-9f2e0e83df01",
+  "work_order_id": "WO-2026-000123",
+  "order_number": "WO-2026-000123",
+  "material_id": "FG-PLATE-A1",
+  "work_center_id": "WC-WELD-01",
+  "operator_id": "OP-1042",
+  "planned_quantity": 250.0,
+  "uom": "EA",
+  "dispatched_at": 1761480123000,
+  "site_id": "SITE-DE-MUC",
+  "trace_id": "00-2c0d6da6-67b7-4f81-a8c0-14a4a6c79b00-01"
+}

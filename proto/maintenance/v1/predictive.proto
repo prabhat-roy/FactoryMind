@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package factorymind.maintenance.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/maintenance/v1;maintenancev1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.maintenance.v1";
+
+message FailurePrediction {
+  string equipment_id = 1;
+  string failure_mode = 2; // BEARING_WEAR | MOTOR_OVERHEAT | TOOL_BREAKAGE
+  double probability = 3;
+  double rul_hours = 4; // remaining useful life
+  google.protobuf.Timestamp predicted_at = 5;
+  string model_version = 6;
+}
+
+message GetPredictionRequest {
+  string equipment_id = 1;
+}
+
+service PredictiveMaintenanceService {
+  rpc GetPrediction(GetPredictionRequest) returns (FailurePrediction);
+}

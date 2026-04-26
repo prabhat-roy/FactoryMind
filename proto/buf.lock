@@ -1,0 +1,10 @@
+version: v1
+deps:
+  - remote: buf.build
+    owner: googleapis
+    repository: googleapis
+    commit: 28151c0d0a1641bf938a7672c500e01d
+  - remote: buf.build
+    owner: grpc
+    repository: grpc
+    commit: f3ecdef24b9248ed913037df1ba8f7be

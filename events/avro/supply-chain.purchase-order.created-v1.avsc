@@ -1,0 +1,13 @@
+{
+  "type": "record",
+  "name": "PurchaseOrderCreated",
+  "namespace": "io.factorymind.supply_chain.events",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "po_id", "type": "string"},
+    {"name": "supplier_id", "type": "string"},
+    {"name": "total_amount", "type": "string"},
+    {"name": "currency", "type": "string"},
+    {"name": "created_at", "type": {"type": "long", "logicalType": "timestamp-millis"}}
+  ]
+}

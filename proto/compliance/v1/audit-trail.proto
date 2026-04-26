@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package factorymind.compliance.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/compliance/v1;compliancev1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.compliance.v1";
+
+message AuditEntry {
+  string id = 1;
+  string actor_id = 2;
+  string action = 3;
+  string resource_type = 4;
+  string resource_id = 5;
+  string before_hash = 6;
+  string after_hash = 7;
+  string previous_entry_hash = 8; // tamper-evident chain
+  google.protobuf.Timestamp ts = 9;
+  string trace_id = 10;
+}
+
+// Audit entries are append-only - no Update or Delete RPC.
+message AppendRequest {
+  AuditEntry entry = 1;
+}
+
+message AppendResponse {
+  string id = 1;
+  string entry_hash = 2;
+}
+
+message QueryRequest {
+  string resource_type = 1;
+  string resource_id = 2;
+  google.protobuf.Timestamp from = 3;
+  google.protobuf.Timestamp to = 4;
+}
+
+message QueryResponse {
+  repeated AuditEntry entries = 1;
+}
+
+service AuditTrailService {
+  rpc Append(AppendRequest) returns (AppendResponse);
+  rpc Query(QueryRequest) returns (QueryResponse);
+}

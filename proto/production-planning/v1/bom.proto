@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package factorymind.production_planning.v1;
+
+import "common/v1/types.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/production-planning/v1;productionplanningv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.production_planning.v1";
+
+message BomLine {
+  string component_material_id = 1;
+  factorymind.common.v1.Quantity quantity_per = 2;
+  int32 sequence = 3;
+  bool is_phantom = 4;
+}
+
+message BillOfMaterials {
+  string id = 1;
+  string parent_material_id = 2;
+  string revision = 3;
+  repeated BomLine lines = 4;
+  factorymind.common.v1.AuditMeta audit = 5;
+}
+
+message GetBomRequest {
+  string parent_material_id = 1;
+  string revision = 2;
+}
+
+service BomService {
+  rpc GetBom(GetBomRequest) returns (BillOfMaterials);
+}

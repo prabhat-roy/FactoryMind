@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factorymind.io/events/iiot.vision.defect.v1.json",
+  "title": "VisionDefect",
+  "description": "Edge AI defect classification result from line camera (NVIDIA Jetson).",
+  "type": "object",
+  "required": ["equipment_id", "image_id", "defect_class", "confidence", "ts"],
+  "properties": {
+    "equipment_id": {"type": "string"},
+    "image_id": {"type": "string"},
+    "defect_class": {"type": "string", "enum": ["NONE", "SCRATCH", "DENT", "MISSING_PART", "MISALIGNED", "CONTAMINATION", "COLOUR"]},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "bbox": {"type": "array", "items": {"type": "number"}, "minItems": 4, "maxItems": 4},
+    "model_version": {"type": "string"},
+    "ts": {"type": "string", "format": "date-time"}
+  }
+}

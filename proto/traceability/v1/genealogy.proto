@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package factorymind.traceability.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/traceability/v1;traceabilityv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.traceability.v1";
+
+message GenealogyNode {
+  string serial_or_lot = 1;
+  string material_id = 2;
+  string parent_serial_or_lot = 3;
+  google.protobuf.Timestamp consumed_at = 4;
+  string equipment_id = 5;
+}
+
+message GetGenealogyRequest {
+  string serial_or_lot = 1;
+  bool downstream = 2; // forward genealogy if true; backward if false
+}
+
+message GetGenealogyResponse {
+  repeated GenealogyNode nodes = 1;
+}
+
+service GenealogyService {
+  rpc GetGenealogy(GetGenealogyRequest) returns (GetGenealogyResponse);
+}

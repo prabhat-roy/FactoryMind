@@ -1,0 +1,13 @@
+{
+  "type": "record",
+  "name": "InventoryAdjusted",
+  "namespace": "io.factorymind.warehouse.events",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "material_id", "type": "string"},
+    {"name": "location_id", "type": "string"},
+    {"name": "delta_qty", "type": "double"},
+    {"name": "reason_code", "type": "string"},
+    {"name": "adjusted_at", "type": {"type": "long", "logicalType": "timestamp-millis"}}
+  ]
+}

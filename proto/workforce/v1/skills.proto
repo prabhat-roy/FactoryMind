@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package factorymind.workforce.v1;
+
+import "common/v1/types.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/workforce/v1;workforcev1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.workforce.v1";
+
+message SkillRecord {
+  string operator_id = 1;
+  string skill_code = 2;
+  int32 level = 3;
+  bool certified = 4;
+}
+
+message GetSkillsRequest {
+  string operator_id = 1;
+}
+
+message GetSkillsResponse {
+  repeated SkillRecord skills = 1;
+}
+
+service SkillsMatrixService {
+  rpc GetSkills(GetSkillsRequest) returns (GetSkillsResponse);
+}

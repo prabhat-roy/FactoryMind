@@ -1,0 +1,16 @@
+{
+  "type": "record",
+  "name": "ESignatureApplied",
+  "namespace": "io.factorymind.compliance.events",
+  "doc": "FDA 21 CFR Part 11 e-signature applied. Append-only via EventStoreDB.",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "operator_id", "type": "string"},
+    {"name": "subject_uri", "type": "string"},
+    {"name": "meaning", "type": "string"},
+    {"name": "reason_code", "type": ["null", "string"], "default": null},
+    {"name": "signature_hash", "type": "string"},
+    {"name": "previous_entry_hash", "type": "string"},
+    {"name": "signed_at", "type": {"type": "long", "logicalType": "timestamp-millis"}}
+  ]
+}

@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package factorymind.analytics.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/analytics/v1;analyticsv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.analytics.v1";
+
+message OeeRollup {
+  string scope = 1; // SITE | AREA | LINE | EQUIPMENT
+  string scope_id = 2;
+  google.protobuf.Timestamp window_start = 3;
+  google.protobuf.Timestamp window_end = 4;
+  double availability = 5;
+  double performance = 6;
+  double quality = 7;
+  double oee = 8;
+}
+
+message GetRollupRequest {
+  string scope = 1;
+  string scope_id = 2;
+  google.protobuf.Timestamp from = 3;
+  google.protobuf.Timestamp to = 4;
+  string bucket = 5;
+}
+
+message GetRollupResponse {
+  repeated OeeRollup rollups = 1;
+}
+
+service OeeAnalyticsService {
+  rpc GetRollup(GetRollupRequest) returns (GetRollupResponse);
+}

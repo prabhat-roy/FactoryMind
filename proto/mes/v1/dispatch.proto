@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package factorymind.mes.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/mes/v1;mesv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.mes.v1";
+
+message DispatchListEntry {
+  string work_order_id = 1;
+  string equipment_id = 2;
+  factorymind.common.v1.OperatorRef assigned_operator = 3;
+  int32 priority = 4;
+  google.protobuf.Timestamp dispatch_time = 5;
+}
+
+message GetDispatchListRequest {
+  string work_center_id = 1;
+}
+
+message GetDispatchListResponse {
+  repeated DispatchListEntry entries = 1;
+}
+
+message ConfirmDispatchRequest {
+  string work_order_id = 1;
+  string operator_id = 2;
+  factorymind.common.v1.ESignature signature = 3;
+}
+
+service DispatchService {
+  rpc GetDispatchList(GetDispatchListRequest) returns (GetDispatchListResponse);
+  rpc ConfirmDispatch(ConfirmDispatchRequest) returns (DispatchListEntry);
+}

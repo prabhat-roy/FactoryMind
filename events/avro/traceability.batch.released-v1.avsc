@@ -1,0 +1,14 @@
+{
+  "type": "record",
+  "name": "BatchReleased",
+  "namespace": "io.factorymind.traceability.events",
+  "doc": "Electronic batch record QA-released; downstream traceability is now active.",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "lot_id", "type": "string"},
+    {"name": "material_id", "type": "string"},
+    {"name": "released_by", "type": "string"},
+    {"name": "esignature_hash", "type": "string"},
+    {"name": "released_at", "type": {"type": "long", "logicalType": "timestamp-millis"}}
+  ]
+}

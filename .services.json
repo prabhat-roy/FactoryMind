@@ -1,0 +1,79 @@
+{
+  "_comment": "FactoryMind service catalog. Gitignored. Source of truth for waves of generation.",
+  "domains": {
+    "platform": {
+      "language": "go",
+      "services": ["api-gateway", "mes-bff", "planning-bff", "quality-bff", "graphql-gateway", "config-service", "discovery-service"]
+    },
+    "production-planning": {
+      "language": "java",
+      "services": ["mrp-service", "scheduling-service", "capacity-service", "workorder-service", "bom-service", "demand-forecast-service", "master-schedule-service"]
+    },
+    "mes": {
+      "language": "java",
+      "services": ["mes-core-service", "dispatch-service", "tracking-service", "wip-service", "operator-ui-service", "shift-handover-service", "andon-service"]
+    },
+    "quality": {
+      "language": "kotlin",
+      "services": ["qms-service", "inspection-service", "spc-service", "ncr-service", "calibration-service", "capa-service", "supplier-quality-service"]
+    },
+    "maintenance": {
+      "language": "python",
+      "services": ["pm-service", "vibration-service", "thermal-service", "rul-predictor-service", "cmms-service", "work-permit-service", "spare-parts-service"]
+    },
+    "digital-twin": {
+      "language": "go",
+      "services": ["twin-service", "simulation-service", "model-service", "physics-engine-service", "what-if-service"]
+    },
+    "iiot": {
+      "language": "rust",
+      "services": ["opc-ua-gateway", "mqtt-broker-service", "telemetry-service", "historian-service", "edge-agent", "plc-adapter", "mtconnect-adapter", "modbus-adapter"]
+    },
+    "warehouse": {
+      "language": "java",
+      "services": ["wms-service", "inventory-service", "location-service", "picking-service", "putaway-service", "cycle-count-service", "slotting-service"]
+    },
+    "supply-chain": {
+      "language": "java",
+      "services": ["supplier-service", "purchase-order-service", "inbound-logistics-service", "kanban-service", "vendor-rating-service", "rfq-service"]
+    },
+    "plm": {
+      "language": "kotlin",
+      "services": ["plm-service", "revision-control-service", "cad-integration-service", "ecn-service", "engineering-bom-service"]
+    },
+    "energy": {
+      "language": "go",
+      "services": ["energy-service", "meter-service", "oee-service", "carbon-tracker-service", "iso50001-service"]
+    },
+    "workforce": {
+      "language": "java",
+      "services": ["labour-service", "skills-matrix-service", "training-compliance-service", "shift-management-service", "operator-certification-service"]
+    },
+    "compliance": {
+      "language": "kotlin",
+      "services": ["compliance-service", "batch-record-service", "e-signature-service", "audit-trail-service", "deviation-service", "validation-service"]
+    },
+    "erp-integration": {
+      "language": "java",
+      "services": ["erp-bridge-service", "sap-adapter-service", "oracle-adapter-service", "sync-service", "reconciliation-service", "isa95-mapper-service"]
+    },
+    "analytics": {
+      "language": "scala",
+      "services": ["oee-analytics-service", "yield-analytics-service", "quality-analytics-service", "cost-analytics-service", "downtime-analytics-service"]
+    },
+    "traceability": {
+      "language": "go",
+      "services": ["traceability-service", "lot-tracking-service", "serial-service", "genealogy-service", "recall-service", "epcis-service"]
+    },
+    "identity": {
+      "language": "go",
+      "services": ["auth-service", "operator-sso-service", "mfa-service", "rbac-service", "e-signature-identity-service"]
+    },
+    "notifications": {
+      "language": "node",
+      "services": ["operator-notification-service", "email-dispatch-service", "sms-dispatch-service", "andon-broadcast-service"]
+    }
+  },
+  "ot_services": ["opc-ua-gateway", "mqtt-broker-service", "telemetry-service", "historian-service", "edge-agent", "plc-adapter", "mtconnect-adapter", "modbus-adapter", "andon-service", "operator-ui-service"],
+  "clouds": ["aws", "gcp", "azure"]
+}

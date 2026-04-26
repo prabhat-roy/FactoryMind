@@ -1,0 +1,9 @@
+{
+  "event_id": "9c0d6da6-67b7-4f81-a8c0-14a4a6c79b04",
+  "equipment_id": "ROBOT-WELD-02",
+  "failure_mode": "BEARING_WEAR",
+  "probability": 0.87,
+  "rul_hours": 64.5,
+  "model_version": "rul-lstm-v3.2",
+  "predicted_at": 1761480300000
+}

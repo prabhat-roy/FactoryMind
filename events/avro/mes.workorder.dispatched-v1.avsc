@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "name": "WorkOrderDispatched",
+  "namespace": "io.factorymind.mes.events",
+  "doc": "Emitted when a work order is dispatched to a work center.",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "work_order_id", "type": "string"},
+    {"name": "order_number", "type": "string"},
+    {"name": "material_id", "type": "string"},
+    {"name": "work_center_id", "type": "string"},
+    {"name": "operator_id", "type": ["null", "string"], "default": null},
+    {"name": "planned_quantity", "type": "double"},
+    {"name": "uom", "type": "string"},
+    {"name": "dispatched_at", "type": {"type": "long", "logicalType": "timestamp-millis"}},
+    {"name": "site_id", "type": "string"},
+    {"name": "trace_id", "type": "string"}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factorymind.io/events/iiot.machine.state.v1.json",
+  "title": "MachineState",
+  "type": "object",
+  "required": ["equipment_id", "state", "ts"],
+  "properties": {
+    "equipment_id": {"type": "string"},
+    "state": {"type": "string", "enum": ["RUN", "IDLE", "STOPPED", "FAULT", "SETUP", "MAINTENANCE"]},
+    "ts": {"type": "string", "format": "date-time"},
+    "reason_code": {"type": "string"}
+  }
+}

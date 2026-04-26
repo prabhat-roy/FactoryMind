@@ -1,0 +1,13 @@
+{
+  "type": "record",
+  "name": "CarbonRecorded",
+  "namespace": "io.factorymind.energy.events",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "site_id", "type": "string"},
+    {"name": "scope1_kg_co2e", "type": "double"},
+    {"name": "scope2_kg_co2e", "type": "double"},
+    {"name": "scope3_kg_co2e", "type": "double"},
+    {"name": "recorded_at", "type": {"type": "long", "logicalType": "timestamp-millis"}}
+  ]
+}

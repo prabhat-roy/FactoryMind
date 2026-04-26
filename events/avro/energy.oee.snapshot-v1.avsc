@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "OeeSnapshot",
+  "namespace": "io.factorymind.energy.events",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "equipment_id", "type": "string"},
+    {"name": "window_start", "type": {"type": "long", "logicalType": "timestamp-millis"}},
+    {"name": "window_end", "type": {"type": "long", "logicalType": "timestamp-millis"}},
+    {"name": "availability", "type": "double"},
+    {"name": "performance", "type": "double"},
+    {"name": "quality", "type": "double"},
+    {"name": "oee", "type": "double"}
+  ]
+}

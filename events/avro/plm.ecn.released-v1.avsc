@@ -1,0 +1,13 @@
+{
+  "type": "record",
+  "name": "EcnReleased",
+  "namespace": "io.factorymind.plm.events",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "ecn_id", "type": "string"},
+    {"name": "affected_part_id", "type": "string"},
+    {"name": "from_revision", "type": "string"},
+    {"name": "to_revision", "type": "string"},
+    {"name": "effective_date", "type": {"type": "long", "logicalType": "timestamp-millis"}}
+  ]
+}

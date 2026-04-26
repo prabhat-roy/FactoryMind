@@ -1,6 +1,26 @@
-# Proto — FactoryMind
+# proto/
 
-gRPC `.proto` definitions organised by domain — single source of truth for service contracts.
+gRPC service contracts for FactoryMind. Versioned per-package (e.g. `v1`).
 
-> Skeleton placeholder. Content will be added as the project takes shape.
-> See [../README.md](../README.md) for the FactoryMind project overview.
+## Structure
+
+- `common/v1/` shared types (Site, Area, WorkCenter, EquipmentRef, ESignature)
+- `<domain>/v1/` per-domain RPC and message definitions
+- `buf.yaml` / `buf.gen.yaml` codegen config
+
+## Build
+
+```
+buf lint
+buf breaking --against '.git#branch=main'
+buf generate
+```
+
+Generated code lives under `proto/gen/{go,java,python,rust}/`.
+
+## Conventions
+
+- Snake_case field names; PascalCase messages
+- Versioned packages: `factorymind.<domain>.v1`
+- All operator actions accept a `common.v1.ESignature` (FDA 21 CFR Part 11)
+- IT->OT command messages always carry a signed nonce (data-diode rule)

@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package factorymind.iiot.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/iiot/v1;iiotv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.iiot.v1";
+
+// OPC-UA tag/node sample. Fields align to OPC-UA Part 4 Read service.
+message OpcUaSample {
+  string node_id = 1;       // ns=2;s=Channel1.Device1.Tag1
+  string display_name = 2;
+  oneof value {
+    double double_value = 3;
+    int64 int_value = 4;
+    bool bool_value = 5;
+    string string_value = 6;
+  }
+  uint32 status_code = 7;   // OPC-UA StatusCode
+  google.protobuf.Timestamp source_time = 8;
+  google.protobuf.Timestamp server_time = 9;
+  string equipment_id = 10;
+}
+
+message PublishSamplesRequest {
+  repeated OpcUaSample samples = 1;
+}
+
+message PublishSamplesResponse {
+  uint32 accepted = 1;
+  uint32 rejected = 2;
+}
+
+// Command path - IT to OT, signed.
+message OpcUaCommand {
+  string node_id = 1;
+  string value = 2;
+  string issued_by = 3;
+  string signature = 4; // RSA-PSS signature over (node_id|value|issued_by|nonce)
+  string nonce = 5;
+}
+
+message ExecuteCommandRequest {
+  OpcUaCommand command = 1;
+}
+
+message ExecuteCommandResponse {
+  bool accepted = 1;
+  string reason = 2;
+}
+
+service OpcUaGatewayService {
+  rpc PublishSamples(PublishSamplesRequest) returns (PublishSamplesResponse);
+  rpc ExecuteCommand(ExecuteCommandRequest) returns (ExecuteCommandResponse);
+}

@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package factorymind.plm.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/plm/v1;plmv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.plm.v1";
+
+enum EcnStatus {
+  ECN_STATUS_UNSPECIFIED = 0;
+  DRAFT = 1;
+  IN_REVIEW = 2;
+  APPROVED = 3;
+  RELEASED = 4;
+  REJECTED = 5;
+}
+
+message EngineeringChangeNotice {
+  string id = 1;
+  string number = 2;
+  string title = 3;
+  string description = 4;
+  EcnStatus status = 5;
+  string affected_part_id = 6;
+  string from_revision = 7;
+  string to_revision = 8;
+  google.protobuf.Timestamp effective_date = 9;
+  factorymind.common.v1.AuditMeta audit = 10;
+}
+
+message SubmitEcnRequest {
+  EngineeringChangeNotice ecn = 1;
+}
+
+service EcnService {
+  rpc SubmitEcn(SubmitEcnRequest) returns (EngineeringChangeNotice);
+}

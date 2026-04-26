@@ -1,0 +1,12 @@
+{
+  "type": "record",
+  "name": "SessionCreated",
+  "namespace": "io.factorymind.identity.events",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "session_id", "type": "string"},
+    {"name": "subject", "type": "string"},
+    {"name": "mfa", "type": "boolean"},
+    {"name": "created_at", "type": {"type": "long", "logicalType": "timestamp-millis"}}
+  ]
+}

@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package factorymind.plm.v1;
+
+import "common/v1/types.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/plm/v1;plmv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.plm.v1";
+
+message EngineeringBomLine {
+  string component_id = 1;
+  string revision = 2;
+  factorymind.common.v1.Quantity quantity = 3;
+  string reference_designator = 4;
+}
+
+message EngineeringBom {
+  string parent_id = 1;
+  string revision = 2;
+  repeated EngineeringBomLine lines = 3;
+}
+
+message GetEbomRequest {
+  string parent_id = 1;
+  string revision = 2;
+}
+
+service EngineeringBomService {
+  rpc GetEbom(GetEbomRequest) returns (EngineeringBom);
+}

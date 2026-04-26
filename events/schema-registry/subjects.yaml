@@ -1,0 +1,64 @@
+subjects:
+  - name: mes.workorder.dispatched-value
+    schema: ../avro/mes.workorder.dispatched-v1.avsc
+    compatibility: BACKWARD
+  - name: mes.workorder.released-value
+    schema: ../avro/mes.workorder.released-v1.avsc
+    compatibility: BACKWARD
+  - name: mes.workorder.completed-value
+    schema: ../avro/mes.workorder.completed-v1.avsc
+    compatibility: BACKWARD
+  - name: quality.inspection.failed-value
+    schema: ../avro/quality.inspection.failed-v1.avsc
+    compatibility: BACKWARD
+  - name: quality.inspection.passed-value
+    schema: ../avro/quality.inspection.passed-v1.avsc
+    compatibility: BACKWARD
+  - name: quality.spc.violation-value
+    schema: ../avro/quality.spc.violation-v1.avsc
+    compatibility: BACKWARD
+  - name: quality.ncr.raised-value
+    schema: ../avro/quality.ncr.raised-v1.avsc
+    compatibility: BACKWARD
+  - name: predictive-maintenance.failure.predicted-value
+    schema: ../avro/predictive-maintenance.failure.predicted-v1.avsc
+    compatibility: BACKWARD
+  - name: predictive-maintenance.workorder.created-value
+    schema: ../avro/predictive-maintenance.workorder.created-v1.avsc
+    compatibility: BACKWARD
+  - name: traceability.batch.released-value
+    schema: ../avro/traceability.batch.released-v1.avsc
+    compatibility: FULL
+  - name: traceability.recall.opened-value
+    schema: ../avro/traceability.recall.opened-v1.avsc
+    compatibility: FULL
+  - name: traceability.serial.consumed-value
+    schema: ../avro/traceability.serial.consumed-v1.avsc
+    compatibility: BACKWARD
+  - name: energy.oee.snapshot-value
+    schema: ../avro/energy.oee.snapshot-v1.avsc
+    compatibility: BACKWARD
+  - name: energy.carbon.recorded-value
+    schema: ../avro/energy.carbon.recorded-v1.avsc
+    compatibility: BACKWARD
+  - name: compliance.esignature.applied-value
+    schema: ../avro/compliance.esignature.applied-v1.avsc
+    compatibility: FULL_TRANSITIVE
+  - name: compliance.deviation.opened-value
+    schema: ../avro/compliance.deviation.opened-v1.avsc
+    compatibility: FULL_TRANSITIVE
+  - name: warehouse.inventory.adjusted-value
+    schema: ../avro/warehouse.inventory.adjusted-v1.avsc
+    compatibility: BACKWARD
+  - name: supply-chain.purchase-order.created-value
+    schema: ../avro/supply-chain.purchase-order.created-v1.avsc
+    compatibility: BACKWARD
+  - name: plm.ecn.released-value
+    schema: ../avro/plm.ecn.released-v1.avsc
+    compatibility: BACKWARD
+  - name: workforce.shift.started-value
+    schema: ../avro/workforce.shift.started-v1.avsc
+    compatibility: BACKWARD
+  - name: identity.session.created-value
+    schema: ../avro/identity.session.created-v1.avsc
+    compatibility: BACKWARD

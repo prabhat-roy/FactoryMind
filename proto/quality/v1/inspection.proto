@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package factorymind.quality.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/quality/v1;qualityv1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.quality.v1";
+
+enum InspectionResult {
+  INSPECTION_RESULT_UNSPECIFIED = 0;
+  PASS = 1;
+  FAIL = 2;
+  CONDITIONAL = 3;
+}
+
+message Measurement {
+  string characteristic_id = 1;
+  double value = 2;
+  string uom = 3;
+  double lsl = 4;
+  double usl = 5;
+  bool in_spec = 6;
+}
+
+message Inspection {
+  string id = 1;
+  string lot_id = 2;
+  string work_order_id = 3;
+  string plan_id = 4;
+  repeated Measurement measurements = 5;
+  InspectionResult result = 6;
+  factorymind.common.v1.OperatorRef inspector = 7;
+  google.protobuf.Timestamp inspected_at = 8;
+  factorymind.common.v1.ESignature signature = 9;
+}
+
+message RecordInspectionRequest {
+  Inspection inspection = 1;
+}
+
+service InspectionService {
+  rpc RecordInspection(RecordInspectionRequest) returns (Inspection);
+}

@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "ShiftStarted",
+  "namespace": "io.factorymind.workforce.events",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "shift_id", "type": "string"},
+    {"name": "site_id", "type": "string"},
+    {"name": "started_at", "type": {"type": "long", "logicalType": "timestamp-millis"}}
+  ]
+}

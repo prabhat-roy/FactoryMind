@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package factorymind.warehouse.v1;
+
+import "common/v1/types.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/warehouse/v1;warehousev1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.warehouse.v1";
+
+message PickList {
+  string id = 1;
+  string work_order_id = 2;
+  repeated PickLine lines = 3;
+  string status = 4;
+}
+
+message PickLine {
+  string material_id = 1;
+  string from_location = 2;
+  factorymind.common.v1.Quantity quantity = 3;
+  bool picked = 4;
+}
+
+message GeneratePickListRequest {
+  string work_order_id = 1;
+}
+
+service PickingService {
+  rpc GeneratePickList(GeneratePickListRequest) returns (PickList);
+}

@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package factorymind.workforce.v1;
+
+import "common/v1/types.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/factorymind/proto/gen/go/workforce/v1;workforcev1";
+option java_multiple_files = true;
+option java_package = "io.factorymind.proto.workforce.v1";
+
+message LabourEntry {
+  string id = 1;
+  string operator_id = 2;
+  string work_order_id = 3;
+  string activity = 4; // SETUP | RUN | TEARDOWN | INDIRECT
+  google.protobuf.Timestamp start = 5;
+  google.protobuf.Timestamp end = 6;
+}
+
+message ClockOnRequest {
+  string operator_id = 1;
+  string work_order_id = 2;
+  string activity = 3;
+}
+
+service LabourService {
+  rpc ClockOn(ClockOnRequest) returns (LabourEntry);
+}
