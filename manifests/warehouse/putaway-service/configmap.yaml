@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: putaway-service
+  namespace: factorymind
+  labels: { app.kubernetes.io/name: putaway-service, factorymind.io/domain: warehouse }
+data:
+  LOG_LEVEL: info
+  PORT: "50142"

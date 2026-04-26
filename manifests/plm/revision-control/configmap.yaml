@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: revision-control
+  namespace: factorymind
+  labels: { app.kubernetes.io/name: revision-control, factorymind.io/domain: plm }
+data:
+  LOG_LEVEL: info
+  PORT: "50181"

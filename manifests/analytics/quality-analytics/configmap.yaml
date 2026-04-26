@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: quality-analytics
+  namespace: factorymind
+  labels: { app.kubernetes.io/name: quality-analytics, factorymind.io/domain: analytics }
+data:
+  LOG_LEVEL: info
+  PORT: "50282"

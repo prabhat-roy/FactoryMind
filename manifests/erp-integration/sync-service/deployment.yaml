@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sync-service
+  namespace: factorymind
+  labels:
+    app.kubernetes.io/name: sync-service
+    app.kubernetes.io/part-of: factorymind
+    factorymind.io/domain: erp-integration
+spec:
+  replicas: 2
+  selector: { matchLabels: { app.kubernetes.io/name: sync-service } }
+  template:
+    metadata:
+      labels: { app.kubernetes.io/name: sync-service, factorymind.io/domain: erp-integration }
+    spec:
+      serviceAccountName: sync-service
+      securityContext: { runAsNonRoot: true, runAsUser: 1000, fsGroup: 1000 }
+      containers:
+        - name: sync-service
+          image: harbor.factorymind.internal/factorymind/sync-service:latest
+          ports: [{ containerPort: 50262, name: http }]
+          envFrom: [{ configMapRef: { name: sync-service } }]
+          livenessProbe:  { httpGet: { path: /healthz, port: 50262 }, initialDelaySeconds: 15 }
+          readinessProbe: { httpGet: { path: /healthz, port: 50262 }, initialDelaySeconds: 5 }
+          resources:
+            requests: { cpu: 100m, memory: 128Mi }
+            limits:   { cpu: 1000m, memory: 512Mi }
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: { drop: ["ALL"] }

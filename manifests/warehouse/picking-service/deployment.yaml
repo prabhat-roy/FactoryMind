@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: picking-service
+  namespace: factorymind
+  labels:
+    app.kubernetes.io/name: picking-service
+    app.kubernetes.io/part-of: factorymind
+    factorymind.io/domain: warehouse
+spec:
+  replicas: 2
+  selector: { matchLabels: { app.kubernetes.io/name: picking-service } }
+  template:
+    metadata:
+      labels: { app.kubernetes.io/name: picking-service, factorymind.io/domain: warehouse }
+    spec:
+      serviceAccountName: picking-service
+      securityContext: { runAsNonRoot: true, runAsUser: 1000, fsGroup: 1000 }
+      containers:
+        - name: picking-service
+          image: harbor.factorymind.internal/factorymind/picking-service:latest
+          ports: [{ containerPort: 50141, name: http }]
+          envFrom: [{ configMapRef: { name: picking-service } }]
+          livenessProbe:  { httpGet: { path: /healthz, port: 50141 }, initialDelaySeconds: 15 }
+          readinessProbe: { httpGet: { path: /healthz, port: 50141 }, initialDelaySeconds: 5 }
+          resources:
+            requests: { cpu: 100m, memory: 128Mi }
+            limits:   { cpu: 1000m, memory: 512Mi }
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: { drop: ["ALL"] }

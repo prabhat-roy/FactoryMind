@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cycle-count
+  namespace: factorymind
+  labels: { app.kubernetes.io/name: cycle-count, factorymind.io/domain: warehouse }
+data:
+  LOG_LEVEL: info
+  PORT: "50143"

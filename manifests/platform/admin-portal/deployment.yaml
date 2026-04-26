@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-portal
+  namespace: factorymind
+  labels:
+    app.kubernetes.io/name: admin-portal
+    app.kubernetes.io/part-of: factorymind
+    factorymind.io/domain: platform
+spec:
+  replicas: 2
+  selector: { matchLabels: { app.kubernetes.io/name: admin-portal } }
+  template:
+    metadata:
+      labels: { app.kubernetes.io/name: admin-portal, factorymind.io/domain: platform }
+    spec:
+      serviceAccountName: admin-portal
+      securityContext: { runAsNonRoot: true, runAsUser: 1000, fsGroup: 1000 }
+      containers:
+        - name: admin-portal
+          image: harbor.factorymind.internal/factorymind/admin-portal:latest
+          ports: [{ containerPort: 50001, name: http }]
+          envFrom: [{ configMapRef: { name: admin-portal } }]
+          livenessProbe:  { httpGet: { path: /healthz, port: 50001 }, initialDelaySeconds: 15 }
+          readinessProbe: { httpGet: { path: /healthz, port: 50001 }, initialDelaySeconds: 5 }
+          resources:
+            requests: { cpu: 100m, memory: 128Mi }
+            limits:   { cpu: 1000m, memory: 512Mi }
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: { drop: ["ALL"] }

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: recall-service
+  namespace: factorymind
+  labels: { app.kubernetes.io/name: recall-service, factorymind.io/domain: traceability }
+data:
+  LOG_LEVEL: info
+  PORT: "50302"

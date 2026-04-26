@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lot-tracking
+  namespace: factorymind
+  labels: { app.kubernetes.io/name: lot-tracking, factorymind.io/domain: traceability }
+data:
+  LOG_LEVEL: info
+  PORT: "50300"

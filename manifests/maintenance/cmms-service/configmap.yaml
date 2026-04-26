@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cmms-service
+  namespace: factorymind
+  labels: { app.kubernetes.io/name: cmms-service, factorymind.io/domain: maintenance }
+data:
+  LOG_LEVEL: info
+  PORT: "50102"

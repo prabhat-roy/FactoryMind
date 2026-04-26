@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: scheduler-service
+  namespace: factorymind
+  labels: { app.kubernetes.io/name: scheduler-service, factorymind.io/domain: platform }
+data:
+  LOG_LEVEL: info
+  PORT: "50004"

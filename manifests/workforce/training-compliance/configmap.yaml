@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: training-compliance
+  namespace: factorymind
+  labels: { app.kubernetes.io/name: training-compliance, factorymind.io/domain: workforce }
+data:
+  LOG_LEVEL: info
+  PORT: "50222"

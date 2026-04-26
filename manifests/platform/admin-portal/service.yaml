@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-portal
+  namespace: factorymind
+  labels: { app.kubernetes.io/name: admin-portal, factorymind.io/domain: platform }
+spec:
+  type: ClusterIP
+  ports: [{ name: http, port: 50001, targetPort: 50001 }]
+  selector: { app.kubernetes.io/name: admin-portal }

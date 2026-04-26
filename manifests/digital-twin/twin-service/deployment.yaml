@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: twin-service
+  namespace: factorymind
+  labels:
+    app.kubernetes.io/name: twin-service
+    app.kubernetes.io/part-of: factorymind
+    factorymind.io/domain: digital-twin
+spec:
+  replicas: 2
+  selector: { matchLabels: { app.kubernetes.io/name: twin-service } }
+  template:
+    metadata:
+      labels: { app.kubernetes.io/name: twin-service, factorymind.io/domain: digital-twin }
+    spec:
+      serviceAccountName: twin-service
+      securityContext: { runAsNonRoot: true, runAsUser: 1000, fsGroup: 1000 }
+      containers:
+        - name: twin-service
+          image: harbor.factorymind.internal/factorymind/twin-service:latest
+          ports: [{ containerPort: 50120, name: http }]
+          envFrom: [{ configMapRef: { name: twin-service } }]
+          livenessProbe:  { httpGet: { path: /healthz, port: 50120 }, initialDelaySeconds: 15 }
+          readinessProbe: { httpGet: { path: /healthz, port: 50120 }, initialDelaySeconds: 5 }
+          resources:
+            requests: { cpu: 100m, memory: 128Mi }
+            limits:   { cpu: 1000m, memory: 512Mi }
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: { drop: ["ALL"] }

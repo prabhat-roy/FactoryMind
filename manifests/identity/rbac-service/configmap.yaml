@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rbac-service
+  namespace: factorymind
+  labels: { app.kubernetes.io/name: rbac-service, factorymind.io/domain: identity }
+data:
+  LOG_LEVEL: info
+  PORT: "50022"

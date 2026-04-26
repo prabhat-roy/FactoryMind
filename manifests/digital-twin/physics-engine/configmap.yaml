@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: physics-engine
+  namespace: factorymind
+  labels: { app.kubernetes.io/name: physics-engine, factorymind.io/domain: digital-twin }
+data:
+  LOG_LEVEL: info
+  PORT: "50122"

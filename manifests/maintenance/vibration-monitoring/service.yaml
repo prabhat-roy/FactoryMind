@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: vibration-monitoring
+  namespace: factorymind
+  labels: { app.kubernetes.io/name: vibration-monitoring, factorymind.io/domain: maintenance }
+spec:
+  type: ClusterIP
+  ports: [{ name: http, port: 50101, targetPort: 50101 }]
+  selector: { app.kubernetes.io/name: vibration-monitoring }

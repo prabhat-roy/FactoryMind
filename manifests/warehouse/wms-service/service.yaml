@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wms-service
+  namespace: factorymind
+  labels: { app.kubernetes.io/name: wms-service, factorymind.io/domain: warehouse }
+spec:
+  type: ClusterIP
+  ports: [{ name: http, port: 50140, targetPort: 50140 }]
+  selector: { app.kubernetes.io/name: wms-service }

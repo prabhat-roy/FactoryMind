@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: serial-service
+  namespace: factorymind
+  labels: { app.kubernetes.io/name: serial-service, factorymind.io/domain: traceability }
+data:
+  LOG_LEVEL: info
+  PORT: "50301"

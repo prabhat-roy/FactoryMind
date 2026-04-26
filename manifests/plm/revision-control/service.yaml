@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: revision-control
+  namespace: factorymind
+  labels: { app.kubernetes.io/name: revision-control, factorymind.io/domain: plm }
+spec:
+  type: ClusterIP
+  ports: [{ name: http, port: 50181, targetPort: 50181 }]
+  selector: { app.kubernetes.io/name: revision-control }

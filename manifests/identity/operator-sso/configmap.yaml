@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: operator-sso
+  namespace: factorymind
+  labels: { app.kubernetes.io/name: operator-sso, factorymind.io/domain: identity }
+data:
+  LOG_LEVEL: info
+  PORT: "50021"
