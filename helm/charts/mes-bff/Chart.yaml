@@ -1,0 +1,10 @@
+apiVersion: v2
+name: mes-bff
+description: FactoryMind backend-for-frontend serving the operator MES UI.
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+keywords: [factorymind, platform, bff, mes]
+maintainers:
+  - name: FactoryMind Platform Team
+    email: platform@factorymind.local

@@ -1,0 +1,9 @@
+image:
+  repository: factorymind.azurecr.io/api-gateway
+serviceAccount:
+  annotations:
+    azure.workload.identity/client-id: "00000000-0000-0000-0000-000000000000"
+podLabels:
+  azure.workload.identity/use: "true"
+nodeSelector:
+  topology.kubernetes.io/region: eastus

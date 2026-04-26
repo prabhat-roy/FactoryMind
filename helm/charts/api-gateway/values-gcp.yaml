@@ -1,0 +1,7 @@
+image:
+  repository: us-docker.pkg.dev/factorymind/services/api-gateway
+serviceAccount:
+  annotations:
+    iam.gke.io/gcp-service-account: api-gateway@factorymind.iam.gserviceaccount.com
+nodeSelector:
+  topology.kubernetes.io/region: us-central1

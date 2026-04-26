@@ -1,0 +1,3 @@
+image: { repository: us-docker.pkg.dev/factorymind/services/planning-bff }
+serviceAccount: { annotations: { iam.gke.io/gcp-service-account: planning-bff@factorymind.iam.gserviceaccount.com } }
+nodeSelector: { topology.kubernetes.io/region: us-central1 }

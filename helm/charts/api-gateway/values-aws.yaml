@@ -1,0 +1,10 @@
+image:
+  repository: 123456789012.dkr.ecr.us-east-1.amazonaws.com/factorymind/api-gateway
+serviceAccount:
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::123456789012:role/factorymind-api-gateway
+podAnnotations:
+  prometheus.io/scrape: "true"
+  prometheus.io/port: "9090"
+nodeSelector:
+  topology.kubernetes.io/region: us-east-1
