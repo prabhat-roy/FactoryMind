@@ -1,0 +1,10 @@
+﻿apiVersion: flink.apache.org/v1beta1
+kind: FlinkSessionJob
+metadata: { name: factorymind-aggregation, namespace: factorymind }
+spec:
+  deploymentName: factorymind-flink
+  job:
+    jarURI: s3://factorymind-flink-jobs/aggregation.jar
+    parallelism: 8
+    upgradeMode: savepoint
+    args: ["--source-topic", "factorymind.events.enriched", "--sink-topic", "factorymind.metrics.aggregated", "--window", "5m"]

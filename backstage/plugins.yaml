@@ -1,0 +1,6 @@
+﻿plugins:
+  - { id: tech-radar, config: { url: https://github.com/prabhat-roy/FactoryMind/raw/main/backstage/tech-radar.json } }
+  - { id: lighthouse, config: { baseUrl: https://lhci.factorymind.internal } }
+  - { id: opencost,   config: { baseUrl: https://opencost.factorymind.internal } }
+  - { id: argocd,     config: { url: https://argocd.factorymind.internal, token: "${ARGOCD_TOKEN}" } }
+  - { id: kubernetes, config: { clusters: [{ name: factorymind-aws, url: https://eks.factorymind.aws.internal }, { name: factorymind-gcp, url: https://gke.factorymind.gcp.internal }, { name: factorymind-azure, url: https://aks.factorymind.azure.internal }] } }

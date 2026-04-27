@@ -1,0 +1,10 @@
+﻿apiVersion: flink.apache.org/v1beta1
+kind: FlinkSessionJob
+metadata: { name: factorymind-event-enrichment, namespace: factorymind }
+spec:
+  deploymentName: factorymind-flink
+  job:
+    jarURI: s3://factorymind-flink-jobs/event-enrichment.jar
+    parallelism: 4
+    upgradeMode: savepoint
+    args: ["--source-topic", "factorymind.cdc.public.events", "--sink-topic", "factorymind.events.enriched"]
