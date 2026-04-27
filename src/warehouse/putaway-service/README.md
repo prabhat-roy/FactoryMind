@@ -1,8 +1,8 @@
-# putaway-service
+﻿# putaway-service
 
-Service in the **warehouse** domain of FactoryMind.
+Service in the warehouse domain of FactoryMind.
 
-**Language:** Go · **Port:** 50142
+Language: Go Â· Port: 50142
 
 ## Run locally
 
@@ -12,9 +12,9 @@ make run
 
 ## Endpoints
 
-- `GET /healthz` — health check, returns `{ "status": "ok" }`
+- `GET /healthz` â€” health check, returns `{ "status": "ok" }`
 
 ## See also
 
-- [helm/charts/putaway-service/](../../../helm/charts/putaway-service/) — Helm chart
-- [manifests/warehouse/putaway-service/](../../../manifests/warehouse/putaway-service/) — Raw K8s manifests
+- [helm/charts/putaway-service/](../../../helm/charts/putaway-service/) â€” Helm chart
+- [manifests/warehouse/putaway-service/](../../../manifests/warehouse/putaway-service/) â€” Raw K8s manifests

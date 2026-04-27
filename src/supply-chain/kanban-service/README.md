@@ -1,8 +1,8 @@
-# kanban-service
+﻿# kanban-service
 
-Service in the **supply-chain** domain of FactoryMind.
+Service in the supply-chain domain of FactoryMind.
 
-**Language:** Go · **Port:** 50162
+Language: Go Â· Port: 50162
 
 ## Run locally
 
@@ -12,9 +12,9 @@ make run
 
 ## Endpoints
 
-- `GET /healthz` — health check, returns `{ "status": "ok" }`
+- `GET /healthz` â€” health check, returns `{ "status": "ok" }`
 
 ## See also
 
-- [helm/charts/kanban-service/](../../../helm/charts/kanban-service/) — Helm chart
-- [manifests/supply-chain/kanban-service/](../../../manifests/supply-chain/kanban-service/) — Raw K8s manifests
+- [helm/charts/kanban-service/](../../../helm/charts/kanban-service/) â€” Helm chart
+- [manifests/supply-chain/kanban-service/](../../../manifests/supply-chain/kanban-service/) â€” Raw K8s manifests

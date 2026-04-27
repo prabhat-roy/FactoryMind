@@ -1,8 +1,8 @@
-# oracle-adapter
+﻿# oracle-adapter
 
-Service in the **erp-integration** domain of FactoryMind.
+Service in the erp-integration domain of FactoryMind.
 
-**Language:** Go · **Port:** 50261
+Language: Go Â· Port: 50261
 
 ## Run locally
 
@@ -12,9 +12,9 @@ make run
 
 ## Endpoints
 
-- `GET /healthz` — health check, returns `{ "status": "ok" }`
+- `GET /healthz` â€” health check, returns `{ "status": "ok" }`
 
 ## See also
 
-- [helm/charts/oracle-adapter/](../../../helm/charts/oracle-adapter/) — Helm chart
-- [manifests/erp-integration/oracle-adapter/](../../../manifests/erp-integration/oracle-adapter/) — Raw K8s manifests
+- [helm/charts/oracle-adapter/](../../../helm/charts/oracle-adapter/) â€” Helm chart
+- [manifests/erp-integration/oracle-adapter/](../../../manifests/erp-integration/oracle-adapter/) â€” Raw K8s manifests

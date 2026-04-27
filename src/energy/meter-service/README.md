@@ -1,8 +1,8 @@
-# meter-service
+﻿# meter-service
 
-Service in the **energy** domain of FactoryMind.
+Service in the energy domain of FactoryMind.
 
-**Language:** Go · **Port:** 50200
+Language: Go Â· Port: 50200
 
 ## Run locally
 
@@ -12,9 +12,9 @@ make run
 
 ## Endpoints
 
-- `GET /healthz` — health check, returns `{ "status": "ok" }`
+- `GET /healthz` â€” health check, returns `{ "status": "ok" }`
 
 ## See also
 
-- [helm/charts/meter-service/](../../../helm/charts/meter-service/) — Helm chart
-- [manifests/energy/meter-service/](../../../manifests/energy/meter-service/) — Raw K8s manifests
+- [helm/charts/meter-service/](../../../helm/charts/meter-service/) â€” Helm chart
+- [manifests/energy/meter-service/](../../../manifests/energy/meter-service/) â€” Raw K8s manifests

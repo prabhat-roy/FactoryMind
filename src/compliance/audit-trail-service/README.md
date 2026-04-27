@@ -1,8 +1,8 @@
-# audit-trail-service
+﻿# audit-trail-service
 
-Service in the **compliance** domain of FactoryMind.
+Service in the compliance domain of FactoryMind.
 
-**Language:** Go · **Port:** 50242
+Language: Go Â· Port: 50242
 
 ## Run locally
 
@@ -12,9 +12,9 @@ make run
 
 ## Endpoints
 
-- `GET /healthz` — health check, returns `{ "status": "ok" }`
+- `GET /healthz` â€” health check, returns `{ "status": "ok" }`
 
 ## See also
 
-- [helm/charts/audit-trail-service/](../../../helm/charts/audit-trail-service/) — Helm chart
-- [manifests/compliance/audit-trail-service/](../../../manifests/compliance/audit-trail-service/) — Raw K8s manifests
+- [helm/charts/audit-trail-service/](../../../helm/charts/audit-trail-service/) â€” Helm chart
+- [manifests/compliance/audit-trail-service/](../../../manifests/compliance/audit-trail-service/) â€” Raw K8s manifests

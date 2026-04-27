@@ -1,8 +1,8 @@
-# skills-matrix
+﻿# skills-matrix
 
-Service in the **workforce** domain of FactoryMind.
+Service in the workforce domain of FactoryMind.
 
-**Language:** Go · **Port:** 50221
+Language: Go Â· Port: 50221
 
 ## Run locally
 
@@ -12,9 +12,9 @@ make run
 
 ## Endpoints
 
-- `GET /healthz` — health check, returns `{ "status": "ok" }`
+- `GET /healthz` â€” health check, returns `{ "status": "ok" }`
 
 ## See also
 
-- [helm/charts/skills-matrix/](../../../helm/charts/skills-matrix/) — Helm chart
-- [manifests/workforce/skills-matrix/](../../../manifests/workforce/skills-matrix/) — Raw K8s manifests
+- [helm/charts/skills-matrix/](../../../helm/charts/skills-matrix/) â€” Helm chart
+- [manifests/workforce/skills-matrix/](../../../manifests/workforce/skills-matrix/) â€” Raw K8s manifests

@@ -1,8 +1,8 @@
-# serial-service
+﻿# serial-service
 
-Service in the **traceability** domain of FactoryMind.
+Service in the traceability domain of FactoryMind.
 
-**Language:** Go · **Port:** 50301
+Language: Go Â· Port: 50301
 
 ## Run locally
 
@@ -12,9 +12,9 @@ make run
 
 ## Endpoints
 
-- `GET /healthz` — health check, returns `{ "status": "ok" }`
+- `GET /healthz` â€” health check, returns `{ "status": "ok" }`
 
 ## See also
 
-- [helm/charts/serial-service/](../../../helm/charts/serial-service/) — Helm chart
-- [manifests/traceability/serial-service/](../../../manifests/traceability/serial-service/) — Raw K8s manifests
+- [helm/charts/serial-service/](../../../helm/charts/serial-service/) â€” Helm chart
+- [manifests/traceability/serial-service/](../../../manifests/traceability/serial-service/) â€” Raw K8s manifests

@@ -1,8 +1,8 @@
-# carbon-tracker
+﻿# carbon-tracker
 
-Service in the **energy** domain of FactoryMind.
+Service in the energy domain of FactoryMind.
 
-**Language:** Go · **Port:** 50202
+Language: Go Â· Port: 50202
 
 ## Run locally
 
@@ -12,9 +12,9 @@ make run
 
 ## Endpoints
 
-- `GET /healthz` — health check, returns `{ "status": "ok" }`
+- `GET /healthz` â€” health check, returns `{ "status": "ok" }`
 
 ## See also
 
-- [helm/charts/carbon-tracker/](../../../helm/charts/carbon-tracker/) — Helm chart
-- [manifests/energy/carbon-tracker/](../../../manifests/energy/carbon-tracker/) — Raw K8s manifests
+- [helm/charts/carbon-tracker/](../../../helm/charts/carbon-tracker/) â€” Helm chart
+- [manifests/energy/carbon-tracker/](../../../manifests/energy/carbon-tracker/) â€” Raw K8s manifests

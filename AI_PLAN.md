@@ -1,4 +1,4 @@
-# AI_PLAN.md — FactoryMind (Smart Manufacturing & Industry 4.0 Platform)
+﻿# AI_PLAN.md â€” FactoryMind (Smart Manufacturing & Industry 4.0 Platform)
 
 > Hierarchical AI/ML strategy. Reuses the Paperclip / OpenClaw / NemoClaw
 > agent platform first defined in [ShopOS/AI.md](../ShopOS/AI.md). This file
@@ -11,17 +11,17 @@
 FactoryMind ingests OPC-UA, MQTT, MTConnect, and ISA-95 telemetry from
 hundreds of machines. AI is the only realistic way to:
 
-- **Predict** failures before they cost a shift's output (predictive
+- Predict failures before they cost a shift's output (predictive
   maintenance on bearings, spindles, hydraulic pumps).
-- **See** defects faster and more consistently than line operators (CV on
+- See defects faster and more consistently than line operators (CV on
   the line, on edge GPUs, sub-100 ms inference).
-- **Schedule** orders / lines / shifts under constraint sets a human
+- Schedule orders / lines / shifts under constraint sets a human
   planner cannot solve in real time.
-- **Reason** over root-cause across MES + SCADA + quality data when an
+- Reason over root-cause across MES + SCADA + quality data when an
   abnormal-OEE alert fires at 3 a.m.
 
 Latency, edge constraints, and ISA/IEC 62443 cyber-physical safety are the
-binding constraints — every AI path is auditable and reversible.
+binding constraints â€” every AI path is auditable and reversible.
 
 ---
 
@@ -46,15 +46,15 @@ binding constraints — every AI path is auditable and reversible.
 
 ## 3. Hierarchical Agent Architecture
 
-Reuses **OpenClaw** / **Paperclip** / **NemoClaw** from `ShopOS/AI.md`.
+Reuses OpenClaw / Paperclip / NemoClaw from `ShopOS/AI.md`.
 
-### Tier 0 — Master Architect Agent
+### Tier 0 â€” Master Architect Agent
 
 `factory-architect` (OpenClaw + Llama 3.1 70B). Researches AI tooling,
 proposes new services, on-boards Tier-1 leads, weekly written report.
 Read-only on prod; writes only to `staging-gitops`.
 
-### Tier 1 — Division Leads (5)
+### Tier 1 â€” Division Leads (5)
 
 | Agent | Scope |
 |-------|-------|
@@ -64,22 +64,22 @@ Read-only on prod; writes only to `staging-gitops`.
 | `factory-dataml-lead`     | Feature store, training, drift, edge model rollouts |
 | `factory-platform-lead`   | Cross-cutting (idempotency, saga, outbox), edge runtime |
 
-### Tier 2 — Specialist Agents
+### Tier 2 â€” Specialist Agents
 
-**By language**: `go-agent`, `java-agent`, `kotlin-agent`, `python-agent`,
+By language: `go-agent`, `java-agent`, `kotlin-agent`, `python-agent`,
 `node-agent`, `rust-agent`, `cpp-agent` (edge), `typescript-agent`.
 
-**By tool** (one agent per OSS tool): PostgreSQL, TimescaleDB, MongoDB,
+By tool (one agent per OSS tool): PostgreSQL, TimescaleDB, MongoDB,
 Redis, Cassandra, ClickHouse, Kafka, NATS, MQTT (Mosquitto/EMQX),
 OPC-UA gateway, Vault, Keycloak, OPA, Kyverno, Falco, Cilium, Istio,
 ArgoCD, Argo Workflows, Prometheus, Grafana, Loki, Jaeger,
 OpenTelemetry, MinIO, Trivy, Cosign, Eclipse Hono, Eclipse Ditto,
 Eclipse Kanto (edge), KubeEdge, Camunda, Druid, OpenSearch.
 
-**By service** — one agent per microservice (~190). Owns README, OpenAPI,
+By service â€” one agent per microservice (~190). Owns README, OpenAPI,
 test coverage, CHANGELOG, deps, /healthz wiring.
 
-### Tier 3 — Ephemeral Workers
+### Tier 3 â€” Ephemeral Workers
 
 Spawned per Argo Workflow job for retraining a defect detector on new
 camera footage, regenerating digital-twin scenarios, writing post-incident
@@ -87,8 +87,8 @@ RCA. Live <30 min.
 
 ### Lifecycle
 
-Research → Document → Implement → Test → Review → Deploy → Monitor →
-Respond → Upgrade → Report. Weekly markdown report in `ai/reports/`.
+Research â†’ Document â†’ Implement â†’ Test â†’ Review â†’ Deploy â†’ Monitor â†’
+Respond â†’ Upgrade â†’ Report. Weekly markdown report in `ai/reports/`.
 
 ---
 
@@ -96,25 +96,25 @@ Respond → Upgrade → Report. Weekly markdown report in `ai/reports/`.
 
 ```
 ai-platform/
-├── cluster: factory-ai-{aws,gcp,azure}   ← cloud GPU pool
-├── cluster: factory-ai-edge              ← KubeEdge / k3s on shop-floor GPUs
-├── namespace: factory-ai-control          ← Paperclip
-├── namespace: factory-ai-agents           ← OpenClaw runtime
-├── namespace: factory-ai-sandbox          ← NemoClaw
-├── namespace: factory-ai-models           ← vLLM, Ollama, LiteLLM, Triton
-├── namespace: factory-ai-edge-models      ← TensorRT, ONNX Runtime on edge
-├── namespace: factory-ai-data             ← Qdrant, Weaviate, MinIO
-├── namespace: factory-ai-obs              ← Langfuse, Phoenix
-└── namespace: factory-ai-pipelines        ← Argo Workflows
+â”œâ”€â”€ cluster: factory-ai-{aws,gcp,azure}   â† cloud GPU pool
+â”œâ”€â”€ cluster: factory-ai-edge              â† KubeEdge / k3s on shop-floor GPUs
+â”œâ”€â”€ namespace: factory-ai-control          â† Paperclip
+â”œâ”€â”€ namespace: factory-ai-agents           â† OpenClaw runtime
+â”œâ”€â”€ namespace: factory-ai-sandbox          â† NemoClaw
+â”œâ”€â”€ namespace: factory-ai-models           â† vLLM, Ollama, LiteLLM, Triton
+â”œâ”€â”€ namespace: factory-ai-edge-models      â† TensorRT, ONNX Runtime on edge
+â”œâ”€â”€ namespace: factory-ai-data             â† Qdrant, Weaviate, MinIO
+â”œâ”€â”€ namespace: factory-ai-obs              â† Langfuse, Phoenix
+â””â”€â”€ namespace: factory-ai-pipelines        â† Argo Workflows
 ```
 
 ### Hardware
 
-- **Cloud**: A100 pool for retraining (vision + forecasting); A10G/L4 for
+- Cloud: A100 pool for retraining (vision + forecasting); A10G/L4 for
   inference of the LLM-based agents.
-- **Edge** (per plant): NVIDIA Jetson Orin or industrial PC with RTX A2000
+- Edge (per plant): NVIDIA Jetson Orin or industrial PC with RTX A2000
   for line-side CV inference. Runs ONNX/TensorRT models pushed via GitOps.
-- Edge → cloud delta: only model weights + telemetry summaries, never raw
+- Edge â†’ cloud delta: only model weights + telemetry summaries, never raw
   video, by default. Air-gapped plants get model push via signed bundles.
 
 ### Software stack
@@ -125,13 +125,13 @@ ai-platform/
 | Edge inference | NVIDIA Triton + TensorRT, ONNX Runtime | Line-side CV |
 | Local dev | Ollama | Offline |
 | Gateway | LiteLLM | OpenAI-compatible, quota |
-| Orchestrator | **Paperclip** | Task queue, audit |
-| Agent platform | **OpenClaw** | Llama 3.1 70B |
-| Sandbox | **NemoClaw** | NeMo Guardrails |
+| Orchestrator | Paperclip | Task queue, audit |
+| Agent platform | OpenClaw | Llama 3.1 70B |
+| Sandbox | NemoClaw | NeMo Guardrails |
 | Vector | Qdrant | SOP / runbook retrieval |
 | Vector | Weaviate | Multimodal defect images + descriptions |
 | MLOps | MLflow | Vision + forecast model registry |
-| Edge MLOps | NVIDIA Fleet Command-style — self-hosted via Argo + Cosign-signed images |
+| Edge MLOps | NVIDIA Fleet Command-style â€” self-hosted via Argo + Cosign-signed images |
 | LLM obs | Langfuse + Phoenix | Trace, cost, eval |
 | Workflows | Argo Workflows | Retraining, eval, edge bundle build |
 | Feature store | Feast | Sensor features (+ Tecton-style streaming) |
@@ -139,7 +139,7 @@ ai-platform/
 
 ### Data isolation
 
-- Plant-level data sovereignty — EU plants' data never leaves EU. Same for
+- Plant-level data sovereignty â€” EU plants' data never leaves EU. Same for
   US, IN, JP. Cilium netpol + OPA enforce.
 - Vector DB shard per plant; no cross-plant retrieval without explicit
   approval token.
@@ -168,7 +168,7 @@ ai-platform/
 | 2 | Paperclip + NemoClaw; Tier-0 architect live; edge cluster blueprint |
 | 3 | Tier-1 leads; defect-detection v0 in shadow mode on one line |
 | 4 | Per-language / per-tool Tier-2 agents |
-| 5 | Per-service Tier-2 agents (mes → quality → maintenance first) |
+| 5 | Per-service Tier-2 agents (mes â†’ quality â†’ maintenance first) |
 | 6 | Predictive maintenance v1 on bearings; energy forecast prod |
 | 7 | Production scheduling with OR-Tools + LLM reasoning |
 | 8 | Multi-plant rollout, edge fleet upgrade, multi-cloud failover drill |
@@ -177,9 +177,9 @@ ai-platform/
 
 ## 7. Cost Envelope (target)
 
-- **Cloud infra**: $4,500 – $7,500 / month per primary cloud
-- **Edge infra**: $1,200 / plant (one-time) + ~$80/month/plant ops
-- **No** subscription LLM spend
+- Cloud infra: $4,500 â€“ $7,500 / month per primary cloud
+- Edge infra: $1,200 / plant (one-time) + ~$80/month/plant ops
+- No subscription LLM spend
 
 ---
 

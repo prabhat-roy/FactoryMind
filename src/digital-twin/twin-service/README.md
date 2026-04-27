@@ -1,8 +1,8 @@
-# twin-service
+﻿# twin-service
 
-Service in the **digital-twin** domain of FactoryMind.
+Service in the digital-twin domain of FactoryMind.
 
-**Language:** Go · **Port:** 50120
+Language: Go Â· Port: 50120
 
 ## Run locally
 
@@ -12,9 +12,9 @@ make run
 
 ## Endpoints
 
-- `GET /healthz` — health check, returns `{ "status": "ok" }`
+- `GET /healthz` â€” health check, returns `{ "status": "ok" }`
 
 ## See also
 
-- [helm/charts/twin-service/](../../../helm/charts/twin-service/) — Helm chart
-- [manifests/digital-twin/twin-service/](../../../manifests/digital-twin/twin-service/) — Raw K8s manifests
+- [helm/charts/twin-service/](../../../helm/charts/twin-service/) â€” Helm chart
+- [manifests/digital-twin/twin-service/](../../../manifests/digital-twin/twin-service/) â€” Raw K8s manifests

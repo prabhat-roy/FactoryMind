@@ -1,8 +1,8 @@
-# sap-adapter
+﻿# sap-adapter
 
-Service in the **erp-integration** domain of FactoryMind.
+Service in the erp-integration domain of FactoryMind.
 
-**Language:** Go · **Port:** 50260
+Language: Go Â· Port: 50260
 
 ## Run locally
 
@@ -12,9 +12,9 @@ make run
 
 ## Endpoints
 
-- `GET /healthz` — health check, returns `{ "status": "ok" }`
+- `GET /healthz` â€” health check, returns `{ "status": "ok" }`
 
 ## See also
 
-- [helm/charts/sap-adapter/](../../../helm/charts/sap-adapter/) — Helm chart
-- [manifests/erp-integration/sap-adapter/](../../../manifests/erp-integration/sap-adapter/) — Raw K8s manifests
+- [helm/charts/sap-adapter/](../../../helm/charts/sap-adapter/) â€” Helm chart
+- [manifests/erp-integration/sap-adapter/](../../../manifests/erp-integration/sap-adapter/) â€” Raw K8s manifests

@@ -1,8 +1,8 @@
-# e-signature-service
+﻿# e-signature-service
 
-Service in the **identity** domain of FactoryMind.
+Service in the identity domain of FactoryMind.
 
-**Language:** Go · **Port:** 50023
+Language: Go Â· Port: 50023
 
 ## Run locally
 
@@ -12,9 +12,9 @@ make run
 
 ## Endpoints
 
-- `GET /healthz` — health check, returns `{ "status": "ok" }`
+- `GET /healthz` â€” health check, returns `{ "status": "ok" }`
 
 ## See also
 
-- [helm/charts/e-signature-service/](../../../helm/charts/e-signature-service/) — Helm chart
-- [manifests/identity/e-signature-service/](../../../manifests/identity/e-signature-service/) — Raw K8s manifests
+- [helm/charts/e-signature-service/](../../../helm/charts/e-signature-service/) â€” Helm chart
+- [manifests/identity/e-signature-service/](../../../manifests/identity/e-signature-service/) â€” Raw K8s manifests

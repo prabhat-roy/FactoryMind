@@ -1,8 +1,8 @@
-# cycle-count
+﻿# cycle-count
 
-Service in the **warehouse** domain of FactoryMind.
+Service in the warehouse domain of FactoryMind.
 
-**Language:** Go · **Port:** 50143
+Language: Go Â· Port: 50143
 
 ## Run locally
 
@@ -12,9 +12,9 @@ make run
 
 ## Endpoints
 
-- `GET /healthz` — health check, returns `{ "status": "ok" }`
+- `GET /healthz` â€” health check, returns `{ "status": "ok" }`
 
 ## See also
 
-- [helm/charts/cycle-count/](../../../helm/charts/cycle-count/) — Helm chart
-- [manifests/warehouse/cycle-count/](../../../manifests/warehouse/cycle-count/) — Raw K8s manifests
+- [helm/charts/cycle-count/](../../../helm/charts/cycle-count/) â€” Helm chart
+- [manifests/warehouse/cycle-count/](../../../manifests/warehouse/cycle-count/) â€” Raw K8s manifests

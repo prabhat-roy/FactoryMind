@@ -1,8 +1,8 @@
-# revision-control
+﻿# revision-control
 
-Service in the **plm** domain of FactoryMind.
+Service in the plm domain of FactoryMind.
 
-**Language:** Go · **Port:** 50181
+Language: Go Â· Port: 50181
 
 ## Run locally
 
@@ -12,9 +12,9 @@ make run
 
 ## Endpoints
 
-- `GET /healthz` — health check, returns `{ "status": "ok" }`
+- `GET /healthz` â€” health check, returns `{ "status": "ok" }`
 
 ## See also
 
-- [helm/charts/revision-control/](../../../helm/charts/revision-control/) — Helm chart
-- [manifests/plm/revision-control/](../../../manifests/plm/revision-control/) — Raw K8s manifests
+- [helm/charts/revision-control/](../../../helm/charts/revision-control/) â€” Helm chart
+- [manifests/plm/revision-control/](../../../manifests/plm/revision-control/) â€” Raw K8s manifests

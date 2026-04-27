@@ -1,8 +1,8 @@
-# capa-service
+﻿# capa-service
 
-Service in the **compliance** domain of FactoryMind.
+Service in the compliance domain of FactoryMind.
 
-**Language:** Go · **Port:** 50241
+Language: Go Â· Port: 50241
 
 ## Run locally
 
@@ -12,9 +12,9 @@ make run
 
 ## Endpoints
 
-- `GET /healthz` — health check, returns `{ "status": "ok" }`
+- `GET /healthz` â€” health check, returns `{ "status": "ok" }`
 
 ## See also
 
-- [helm/charts/capa-service/](../../../helm/charts/capa-service/) — Helm chart
-- [manifests/compliance/capa-service/](../../../manifests/compliance/capa-service/) — Raw K8s manifests
+- [helm/charts/capa-service/](../../../helm/charts/capa-service/) â€” Helm chart
+- [manifests/compliance/capa-service/](../../../manifests/compliance/capa-service/) â€” Raw K8s manifests
